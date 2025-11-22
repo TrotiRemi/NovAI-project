@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAI - Événements</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="logo.png" alt="NOVAI Logo" class="logo-image">
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="/" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏠</div>
+                        <div class="nav-label">Accueil</div>
+                    </div>
+                </a>
+                <a href="/chat.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">💬</div>
+                        <div class="nav-label">Chat IA</div>
+                    </div>
+                </a>
+                <a href="/quiz.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🎯</div>
+                        <div class="nav-label">Quiz & Tests</div>
+                    </div>
+                </a>
+                <a href="/events.html" class="nav-item-link">
+                    <div class="nav-item active">
+                        <div class="nav-icon">📅</div>
+                        <div class="nav-label">Événements</div>
+                    </div>
+                </a>
+            </nav>
+
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="welcome-section">
+                    <div class="welcome-title">Événements 📅</div>
+                    <div class="welcome-subtitle">Découvrez nos prochains événements et rencontres</div>
+                </div>
+
+                <div class="events-grid" id="eventsContainer">
+                    <!-- Les événements seront chargés ici par JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Données des événements
+        const events = [
+            {
+                school: "UGE",
+                date: "14/02/2026",
+                description: "La Journée Portes Ouvertes de l'université se tiendra le samedi 14 février 2026 sur le campus de Marne-la-Vallée. Les quatre écoles membres de l'université seront également ouvertes sur le campus de Marne-la-Vallée (ESIEE Paris Ensa Paris-Est Géodata Paris (ex ENSG-géomatique) et sur le campus de Paris (EIVP).",
+                img: "./Image_Event/UGE-JPO26.jpg",
+                url: "https://www.univ-gustave-eiffel.fr/la-formation/jpo"
+            },
+            {
+                school: "INSA TOULOUSE",
+                date: "14/02/2026",
+                description: "Cette journée d'échanges sera l'occasion pour les futurs étudiants, leurs familles et toute personne intéressée, de découvrir l'établissement, les cursus d'ingénieur, les modalités d'admission et la vie sur le campus.",
+                img: "./Image_Event/JPO-INSA-TOULOUSE.png",
+                url: "https://www.insa-toulouse.fr/journee-portes-ouvertes-2026/"
+            },
+            {
+                school: "ESILV PARIS",
+                date: "13/12/2025",
+                description: "Au programme : conférence cursus; visite du campus: rencontre des départements transverses; professeurs; étudiants. L'inscription est obligatoire pour tous les participants. Vous devrez présenter votre billet à votre arrivée.",
+                img: "./Image_Event/ESILV.png",
+                url: "https://www.esilv.fr/admissions/rencontrez-nous/journees-portes-ouvertes/"
+            }
+        ];
+
+        // Fonction pour charger les événements
+        function loadEvents() {
+            const container = document.getElementById('eventsContainer');
+            container.innerHTML = events.map(event => `
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="${event.img}" alt="${event.school}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22300%22 height=%22200%22/%3E%3C/svg%3E'">
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-school">${event.school}</h3>
+                        <div class="event-date">
+                            <span class="date-icon">📅</span>
+                            <span>${event.date}</span>
+                        </div>
+                        <p class="event-description">${event.description}</p>
+                        <a href="${event.url}" target="_blank" class="event-link">En savoir plus →</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Charger les événements au chargement de la page
+        document.addEventListener('DOMContentLoaded', loadEvents);
+    </script>
+</body>
+</html>

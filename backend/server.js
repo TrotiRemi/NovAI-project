@@ -21,6 +21,18 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
+app.get('/chat.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/chat.html'));
+});
+
+app.get('/quiz.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/quiz.html'));
+});
+
+app.get('/events.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/events.html'));
+});
+
 // Démarrer le serveur
 app.listen(PORT, () => {
     console.log(`Serveur NovAI en cours d'exécution sur http://localhost:${PORT}`);
