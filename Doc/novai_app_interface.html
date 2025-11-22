@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAI - Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #F5F7FA;
+            overflow: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #4A3F8F 0%, #6B5FB8 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+        }
+
+        .logo-section {
+            padding: 30px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: #FF8A80;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            flex: 1;
+            padding: 20px 0;
+        }
+
+        .nav-item {
+            padding: 16px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+            border-left-color: #FF8A80;
+        }
+
+        .nav-item.active {
+            background: rgba(255,255,255,0.15);
+            border-left-color: #FF8A80;
+        }
+
+        .nav-icon {
+            font-size: 24px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .nav-label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .user-profile {
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            background: #FFE8DC;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .user-status {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            border: 2px solid #E8EAF6;
+            border-radius: 25px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #6B5FB8;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #9FA8DA;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .header-btn {
+            width: 45px;
+            height: 45px;
+            background: #F5F7FA;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+
+        .header-btn:hover {
+            background: #E8EAF6;
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .welcome-section {
+            margin-bottom: 40px;
+        }
+
+        .welcome-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #2C2C2C;
+            margin-bottom: 10px;
+        }
+
+        .welcome-subtitle {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            border-color: #FF8A80;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FF9E8A 0%, #FF8A80 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2C2C2C;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Chat Section */
+        .chat-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #F5F7FA;
+        }
+
+        .chat-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6B5FB8 0%, #4A3F8F 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .chat-info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2C2C2C;
+        }
+
+        .chat-info p {
+            font-size: 13px;
+            color: #4CAF50;
+        }
+
+        .chat-messages {
+            min-height: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .message.bot {
+            justify-content: flex-start;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 15px 20px;
+            border-radius: 18px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .message.bot .message-bubble {
+            background: linear-gradient(135deg, #6B5FB8 0%, #4A3F8F 100%);
+            color: white;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.user .message-bubble {
+            background: #E8EAF6;
+            color: #2C2C2C;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #E8EAF6;
+            border-radius: 25px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #6B5FB8;
+        }
+
+        .send-btn {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #FF9E8A 0%, #FF8A80 100%);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 138, 128, 0.4);
+        }
+
+        /* Progress Bar */
+        .progress-section {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 25px;
+        }
+
+        .progress-header {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2C2C2C;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: #E8EAF6;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF9E8A 0%, #FF8A80 100%);
+            width: 35%;
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+
+        .progress-label {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo">
+                    <div class="logo-icon">⭐</div>
+                    <div class="logo-text">NOVAI</div>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-item active">
+                    <div class="nav-icon">🏠</div>
+                    <div class="nav-label">Accueil</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-icon">💬</div>
+                    <div class="nav-label">Chat IA</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-icon">🎯</div>
+                    <div class="nav-label">Quiz & Tests</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-icon">👤</div>
+                    <div class="nav-label">Mon Profil</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-icon">📅</div>
+                    <div class="nav-label">Événements</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-icon">🤝</div>
+                    <div class="nav-label">Réseautage</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-icon">📚</div>
+                    <div class="nav-label">Ressources</div>
+                </div>
+            </nav>
+
+            <div class="user-profile">
+                <div class="user-avatar">👧</div>
+                <div class="user-info">
+                    <div class="user-name">Elisa</div>
+                    <div class="user-status">Élève de seconde</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Rechercher un métier, une formation...">
+                </div>
+                <div class="header-actions">
+                    <button class="header-btn">🔔</button>
+                    <button class="header-btn">⚙️</button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="welcome-section">
+                    <div class="welcome-title">Bonjour Elisa ! 👋</div>
+                    <div class="welcome-subtitle">Prête à explorer ton futur dans le numérique ?</div>
+                </div>
+
+                <!-- Feature Cards -->
+                <div class="cards-grid">
+                    <div class="feature-card">
+                        <div class="card-icon">💬</div>
+                        <div class="card-title">Parle avec moi</div>
+                        <div class="card-description">Pose-moi toutes tes questions sur les métiers du numérique</div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon">🎯</div>
+                        <div class="card-title">Découvre ton profil</div>
+                        <div class="card-description">Un test personnalisé pour identifier tes forces et tes envies</div>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="card-icon">👥</div>
+                        <div class="card-title">Témoignages inspirants</div>
+                        <div class="card-description">Rencontre des femmes qui ont osé se lancer dans la tech</div>
+                    </div>
+                </div>
+
+                <!-- Chat Section -->
+                <div class="chat-section">
+                    <div class="chat-header">
+                        <div class="chat-avatar">⭐</div>
+                        <div class="chat-info">
+                            <h3>Assistant NOVAI</h3>
+                            <p>● En ligne</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages">
+                        <div class="message bot">
+                            <div class="message-bubble">
+                                Salut Elisa ! Je suis là pour t'aider à explorer les métiers du numérique. Tu as des questions ou tu veux qu'on fasse un test ensemble ? 😊
+                            </div>
+                        </div>
+
+                        <div class="message user">
+                            <div class="message-bubble">
+                                J'aime les maths, mais je doute que ce soit vraiment pour moi…
+                            </div>
+                        </div>
+
+                        <div class="message bot">
+                            <div class="message-bubble">
+                                C'est normal de se poser des questions ! Beaucoup de jeunes filles ressentent la même chose. Dis-moi, qu'est-ce que tu aimes dans les maths ? On peut explorer des métiers qui te correspondent.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-area">
+                        <input type="text" class="chat-input" placeholder="Écris ton message...">
+                        <button class="send-btn">➤</button>
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div class="progress-section">
+                    <div class="progress-header">Ta progression</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-label">3 sur 8 étapes complétées</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
