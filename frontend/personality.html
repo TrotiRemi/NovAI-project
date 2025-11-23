@@ -19,8 +19,8 @@
             <nav class="nav-menu">
                 <a href="/" class="nav-item-link">
                     <div class="nav-item">
-                        <div class="nav-icon">🏠</div>
-                        <div class="nav-label">Accueil</div>
+                        <div class="nav-icon">👤</div>
+                        <div class="nav-label">Mon Profil</div>
                     </div>
                 </a>
                 <a href="/personality.html" class="nav-item-link">
@@ -54,8 +54,28 @@
         <div class="main-content">
             <!-- Header -->
             <div class="header">
-                <div class="tagline-banner">
-                    <p>✨ NovAI : Le site qui crée des étoiles ✨</p>
+                <div class="header-left">
+                    <a href="/logout.html" class="header-icon-btn logout-btn" title="Déconnexion">
+                        🚪
+                    </a>
+                </div>
+
+                <div class="header-center">
+                    <div class="tagline-banner">
+                        <p>✨ NovAI : Le site qui crée des étoiles ✨</p>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="header-icon-btn" id="settingsBtn">
+                        ⚙️
+                        <div class="settings-dropdown" id="settingsDropdown">
+                            <div class="dropdown-item">Style du site</div>
+                            <div class="dropdown-item">Support</div>
+                            <div class="dropdown-item">Abonnement</div>
+                            <div class="dropdown-item">Nos partenaires</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -96,5 +116,18 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Settings dropdown toggle
+        document.getElementById('settingsBtn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('settingsDropdown').classList.toggle('active');
+        });
+
+        // Close dropdown when clicking elsewhere
+        document.addEventListener('click', function() {
+            document.getElementById('settingsDropdown').classList.remove('active');
+        });
+    </script>
 </body>
 </html>

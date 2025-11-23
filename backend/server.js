@@ -33,6 +33,14 @@ app.get('/events.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/events.html'));
 });
 
+app.get('/personality.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/personality.html'));
+});
+
+app.get('/logout.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/logout.html'));
+});
+
 // Démarrer le serveur
 app.listen(PORT, () => {
     console.log(`Serveur NovAI en cours d'exécution sur http://localhost:${PORT}`);
