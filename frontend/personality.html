@@ -109,8 +109,8 @@
                     </div>
 
                     <div class="chat-input-area">
-                        <input type="text" class="chat-input" placeholder="Partage tes pensées...">
-                        <button class="send-btn">✓</button>
+                        <input type="text" id="personalityInput" name="personalityInput" class="chat-input" placeholder="Partage tes pensées...">
+                        <button type="button" id="personalitySendBtn" class="send-btn">✓</button>
                     </div>
                 </div>
             </div>
@@ -118,6 +118,8 @@
     </div>
 
     <script>
+        console.log('🚀 SCRIPT START - Page personality.html loaded');
+        
         // Settings dropdown toggle
         document.getElementById('settingsBtn').addEventListener('click', function(e) {
             e.stopPropagation();
@@ -125,9 +127,121 @@
         });
 
         // Close dropdown when clicking elsewhere
-        document.addEventListener('click', function() {
-            document.getElementById('settingsDropdown').classList.remove('active');
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.personality-chat')) {
+                document.getElementById('settingsDropdown').classList.remove('active');
+            }
         });
+
+        // Personality Chat functionality with conversation history
+        console.log('🔍 Initializing personality chat...');
+        
+        const input = document.getElementById('personalityInput');
+        const sendBtn = document.getElementById('personalitySendBtn');
+        const messagesEl = document.querySelector('.chat-messages');
+        
+        // Store conversation history for context
+        let conversationHistory = [];
+
+        console.log('📦 Elements:', { 
+            input: input ? 'FOUND' : 'NOT FOUND', 
+            sendBtn: sendBtn ? 'FOUND' : 'NOT FOUND', 
+            messagesEl: messagesEl ? 'FOUND' : 'NOT FOUND'
+        });
+
+        if (!input || !sendBtn || !messagesEl) {
+            console.error('❌ ERREUR: Elements manquants!', { input, sendBtn, messagesEl });
+            alert('ERREUR: Elements du chat non trouvés. Rechargez la page.');
+        } else {
+            console.log('✅ All elements found, attaching listeners...');
+
+            function appendMessage(text, who) {
+                console.log('💬 Appending message:', who, '-', text.substring(0, 50) + '...');
+                const wrapper = document.createElement('div');
+                wrapper.className = `message ${who}`;
+                const bubble = document.createElement('div');
+                bubble.className = 'message-bubble';
+                bubble.textContent = text;
+                wrapper.appendChild(bubble);
+                messagesEl.appendChild(wrapper);
+                messagesEl.scrollTop = messagesEl.scrollHeight;
+            }
+
+            async function sendMessage() {
+                console.log('📤 === sendMessage CALLED ===');
+                const text = input.value ? input.value.trim() : '';
+                console.log('📝 Input text:', text ? `"${text}"` : '(empty)');
+                
+                if (!text) {
+                    console.log('⚠️ No text, aborting');
+                    return;
+                }
+
+                // Add user message to history and display
+                conversationHistory.push({ role: 'user', content: text });
+                appendMessage(text, 'user');
+                input.value = '';
+                sendBtn.disabled = true;
+                sendBtn.textContent = '…';
+
+                try {
+                    console.log('🌐 Fetching /api/chat-personality...');
+                    console.log('📚 Conversation history length:', conversationHistory.length);
+                    
+                    const resp = await fetch('/api/chat-personality', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            message: text,
+                            conversationHistory: conversationHistory.slice(0, -1) // Don't include the message we just added
+                        })
+                    });
+
+                    console.log('📡 Response status:', resp.status, resp.statusText);
+
+                    if (!resp.ok) {
+                        const err = await resp.json().catch(()=>({ error: 'Erreur serveur' }));
+                        console.error('❌ Error response:', err);
+                        appendMessage('Erreur: ' + (err.error || resp.statusText), 'bot');
+                    } else {
+                        const data = await resp.json();
+                        console.log('✅ Success response:', data);
+                        const reply = data.reply || 'Désolé, pas de réponse.';
+                        
+                        // Add assistant response to history
+                        conversationHistory.push({ role: 'assistant', content: reply });
+                        appendMessage(reply, 'bot');
+                    }
+                } catch (e) {
+                    console.error('❌ === FETCH ERROR ===', e);
+                    appendMessage('Erreur de connexion: ' + e.message, 'bot');
+                } finally {
+                    sendBtn.disabled = false;
+                    sendBtn.textContent = '✓';
+                    console.log('🔄 Button restored');
+                }
+            }
+
+            // Button click handler
+            sendBtn.addEventListener('click', function(e) {
+                console.log('🖱️ === BUTTON CLICKED ===');
+                e.stopPropagation();
+                e.preventDefault();
+                sendMessage();
+            });
+
+            // Enter key handler
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    console.log('⌨️ === ENTER PRESSED ===');
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            console.log('✅ Personality chat listeners attached successfully!');
+            console.log('👉 Try typing about your interests and clicking send');
+        }
     </script>
 </body>
 </html>

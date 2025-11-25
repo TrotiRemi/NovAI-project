@@ -105,8 +105,8 @@
                     </div>
 
                     <div class="chat-input-area">
-                        <input type="text" class="chat-input" placeholder="Posez votre question...">
-                        <button class="send-btn">✓</button>
+                        <input type="text" id="chatInput" name="chatInput" class="chat-input" placeholder="Posez votre question...">
+                        <button type="button" id="sendBtn" class="send-btn">✓</button>
                     </div>
                 </div>
             </div>
@@ -114,16 +114,116 @@
     </div>
 
     <script>
+        console.log('🚀 SCRIPT START - Page chat.html loaded');
+        
         // Settings dropdown toggle
         document.getElementById('settingsBtn').addEventListener('click', function(e) {
             e.stopPropagation();
             document.getElementById('settingsDropdown').classList.toggle('active');
         });
 
-        // Close dropdown when clicking elsewhere
-        document.addEventListener('click', function() {
-            document.getElementById('settingsDropdown').classList.remove('active');
+        // Close dropdown when clicking elsewhere (except chat area)
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.chat-section')) {
+                document.getElementById('settingsDropdown').classList.remove('active');
+            }
         });
+
+        // Chat functionality - Execute immediately (script is at end of body)
+        console.log('🔍 Initializing chat...');
+        
+        const input = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const messagesEl = document.querySelector('.chat-messages');
+
+        console.log('📦 Elements:', { 
+            input: input ? 'FOUND' : 'NOT FOUND', 
+            sendBtn: sendBtn ? 'FOUND' : 'NOT FOUND', 
+            messagesEl: messagesEl ? 'FOUND' : 'NOT FOUND'
+        });
+
+        if (!input || !sendBtn || !messagesEl) {
+            console.error('❌ ERREUR: Elements manquants!', { input, sendBtn, messagesEl });
+            alert('ERREUR: Elements du chat non trouvés. Rechargez la page.');
+        } else {
+            console.log('✅ All elements found, attaching listeners...');
+
+            function appendMessage(text, who) {
+                console.log('💬 Appending message:', who, '-', text.substring(0, 50) + '...');
+                const wrapper = document.createElement('div');
+                wrapper.className = `message ${who}`;
+                const bubble = document.createElement('div');
+                bubble.className = 'message-bubble';
+                bubble.textContent = text;
+                wrapper.appendChild(bubble);
+                messagesEl.appendChild(wrapper);
+                messagesEl.scrollTop = messagesEl.scrollHeight;
+            }
+
+            async function sendMessage() {
+                console.log('📤 === sendMessage CALLED ===');
+                const text = input.value ? input.value.trim() : '';
+                console.log('📝 Input text:', text ? `"${text}"` : '(empty)');
+                
+                if (!text) {
+                    console.log('⚠️ No text, aborting');
+                    return;
+                }
+
+                appendMessage(text, 'user');
+                input.value = '';
+                sendBtn.disabled = true;
+                sendBtn.textContent = '…';
+
+                try {
+                    console.log('🌐 Fetching /api/chat...');
+                    const resp = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: text })
+                    });
+
+                    console.log('📡 Response status:', resp.status, resp.statusText);
+
+                    if (!resp.ok) {
+                        const err = await resp.json().catch(()=>({ error: 'Erreur serveur' }));
+                        console.error('❌ Error response:', err);
+                        appendMessage('Erreur: ' + (err.error || resp.statusText), 'bot');
+                    } else {
+                        const data = await resp.json();
+                        console.log('✅ Success response:', data);
+                        appendMessage(data.reply || 'Désolé, pas de réponse.', 'bot');
+                    }
+                } catch (e) {
+                    console.error('❌ === FETCH ERROR ===', e);
+                    appendMessage('Erreur de connexion: ' + e.message, 'bot');
+                } finally {
+                    sendBtn.disabled = false;
+                    sendBtn.textContent = '✓';
+                    console.log('🔄 Button restored');
+                }
+            }
+
+            // Button click handler
+            sendBtn.addEventListener('click', function(e) {
+                console.log('🖱️ === BUTTON CLICKED ===');
+                e.stopPropagation();
+                e.preventDefault();
+                sendMessage();
+            });
+
+            // Enter key handler
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    console.log('⌨️ === ENTER PRESSED ===');
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            console.log('✅ Chat listeners attached successfully!');
+            console.log('👉 Try typing a message and clicking send or pressing Enter');
+        }
     </script>
 </body>
 </html>
