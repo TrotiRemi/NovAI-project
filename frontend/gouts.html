@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVAI - Quiz & Tests</title>
+    <title>NOVAI - Mes Goûts</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
             <nav class="nav-menu">
                 <div class="nav-dropdown">
                     <div class="nav-item-link nav-dropdown-trigger" onclick="toggleNavDropdown(event)">
-                        <div class="nav-item">
+                        <div class="nav-item active">
                             <div class="nav-icon">👤</div>
                             <div class="nav-label">MOI</div>
                             <div class="nav-dropdown-arrow">▼</div>
@@ -40,8 +40,9 @@
                         </a>
                     </div>
                 </div>
+
                 <a href="/quiz.html" class="nav-item-link">
-                    <div class="nav-item active">
+                    <div class="nav-item">
                         <div class="nav-icon">🎯</div>
                         <div class="nav-label">Quiz & Tests</div>
                     </div>
@@ -59,6 +60,7 @@
                     </div>
                 </a>
             </nav>
+
         </div>
 
         <!-- Main Content -->
@@ -80,7 +82,7 @@
                             <span class="block-number">1</span>
                             <span class="block-label">Te connaitre</span>
                         </div>
-                        <div class="progress-block active">
+                        <div class="progress-block">
                             <span class="block-number">2</span>
                             <span class="block-label">Te tester</span>
                         </div>
@@ -115,87 +117,95 @@
             <!-- Content Area -->
             <div class="content-area">
                 <div class="page-header">
-                    <h1>Quiz & Tests</h1>
-                    <p>Explorez vos talents et découvrez de nouvelles opportunités</p>
+                    <h1>Mes Goûts et Passions</h1>
+                    <p>Découvre tes goûts, tes passions et ce qui te définit. Ces informations nous permettent de mieux te comprendre et de te proposer des parcours qui te correspondent vraiment.</p>
                 </div>
 
-                <!-- Info Box -->
-                <div class="quiz-info-box">
-                    <div class="info-icon">💡</div>
-                    <div class="info-content">
-                        <h3>Quiz Personnalisés</h3>
-                        <p>Ces quiz sont générés automatiquement en fonction de votre profil et de vos réponses précédentes. Ils évoluent avec vous pour vous proposer des contenus de plus en plus pertinents et adaptés à votre parcours.</p>
+                <div class="about-box">
+                    <div class="about-icon">❤️</div>
+                    <div class="about-content">
+                        <h2>Mes Goûts et Passions</h2>
+                        <p>Découvre tes goûts, tes passions et ce qui te définit. Ces informations nous permettent de mieux te comprendre et de te proposer des parcours qui te correspondent vraiment.</p>
                     </div>
                 </div>
 
-                <!-- Search Bar -->
-                <div class="quiz-search">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" class="search-input" placeholder="Cherche un quiz...">
-                </div>
+                <div class="profile-section">
+                    <h2>Mes Intérêts Personnels</h2>
+                    
+                    <div class="profile-grid">
+                        <!-- Left Column -->
+                        <div class="profile-column">
+                            <div class="profile-item">
+                                <h3>Sports Pratiqués</h3>
+                                <div class="profile-placeholder">
+                                    <p>⚽ À remplir</p>
+                                </div>
+                            </div>
 
-                <!-- Quiz Grid -->
-                <div class="quiz-grid">
-                    <!-- Quiz 1: Personnalité -->
-                    <div class="quiz-card">
-                        <div class="quiz-image">
-                            <img src="./Image_Quizz/Test_Ciblier_Pour_User.jpg" alt="Quiz Personnalité" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%238B7BA8%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E📊%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="quiz-content">
-                            <div class="quiz-icon-badge">✨</div>
-                            <h3>Quiz Personnalité</h3>
-                            <p class="quiz-description">Mieux te comprendre et découvrir tes traits distinctifs. Ce quiz t'aide à identifier tes forces, tes motivations et tes préférences pour construire un avenir qui te ressemble.</p>
-                            <div class="quiz-footer">
-                                <span class="quiz-difficulty">Facile</span>
-                                <span class="quiz-time">⏱️ 10 min</span>
+                            <div class="profile-item">
+                                <h3>Passions Principales</h3>
+                                <div class="profile-placeholder">
+                                    <p>🔥 À remplir</p>
+                                </div>
+                            </div>
+
+                            <div class="profile-item">
+                                <h3>Hobbies</h3>
+                                <div class="profile-placeholder">
+                                    <p>🎨 À remplir</p>
+                                </div>
+                            </div>
+
+                            <div class="profile-item">
+                                <h3>Activités Créatives</h3>
+                                <div class="profile-placeholder">
+                                    <p>✏️ À remplir</p>
+                                </div>
+                            </div>
+
+                            <div class="profile-item">
+                                <h3>Domaines d'Intérêt</h3>
+                                <div class="profile-placeholder">
+                                    <p>📚 À remplir</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Quiz 2: Mathématiques -->
-                    <div class="quiz-card">
-                        <div class="quiz-image">
-                            <img src="./Image_Quizz/tableau-maths_23-2148178219.avif" alt="Quiz Mathématiques" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%238B7BA8%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E➗%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="quiz-content">
-                            <div class="quiz-icon-badge">📐</div>
-                            <h3>Quiz Mathématiques</h3>
-                            <p class="quiz-description">Te renforcer en mathématiques et découvrir des applications concrètes. Explore comment tes connaissances mathématiques peuvent te permettre de résoudre des problèmes réels et d'exceller dans tes futurs projets.</p>
-                            <div class="quiz-footer">
-                                <span class="quiz-difficulty">Moyen</span>
-                                <span class="quiz-time">⏱️ 15 min</span>
+                        <!-- Right Column -->
+                        <div class="profile-column">
+                            <div class="profile-item">
+                                <h3>Genres de Musique</h3>
+                                <div class="profile-placeholder">
+                                    <p>🎵 À remplir</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Quiz 3: Universités -->
-                    <div class="quiz-card">
-                        <div class="quiz-image">
-                            <img src="./Image_Quizz/University.avif" alt="Quiz Universités" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%238B7BA8%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🎓%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="quiz-content">
-                            <div class="quiz-icon-badge">🏫</div>
-                            <h3>Quiz Universités</h3>
-                            <p class="quiz-description">Mieux connaître les universités que tu pourrais intégrer. Comprendre les parcours disponibles, les conditions d'admission et comment postuler aux établissements les plus adaptés à ton profil et tes ambitions.</p>
-                            <div class="quiz-footer">
-                                <span class="quiz-difficulty">Facile</span>
-                                <span class="quiz-time">⏱️ 12 min</span>
+                            <div class="profile-item">
+                                <h3>Genres de Films / Séries</h3>
+                                <div class="profile-placeholder">
+                                    <p>🎬 À remplir</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Quiz 4: Métiers -->
-                    <div class="quiz-card">
-                        <div class="quiz-image">
-                            <img src="./Image_Quizz/Métier.jpg" alt="Quiz Métiers" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%238B7BA8%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E💼%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="quiz-content">
-                            <div class="quiz-icon-badge">🚀</div>
-                            <h3>Quiz Métiers</h3>
-                            <p class="quiz-description">Découvrir de nouveaux métiers adaptés à ta personnalité. Explore des carrières passionnantes que tu ne connaissais pas encore, trouvées spécialement pour toi en fonction de tes compétences et de tes intérêts.</p>
-                            <div class="quiz-footer">
-                                <span class="quiz-difficulty">Moyen</span>
-                                <span class="quiz-time">⏱️ 20 min</span>
+                            <div class="profile-item">
+                                <h3>Jeux Vidéo</h3>
+                                <div class="profile-placeholder">
+                                    <p>🎮 À remplir</p>
+                                </div>
+                            </div>
+
+                            <div class="profile-item">
+                                <h3>Type de Travail Préféré</h3>
+                                <div class="profile-placeholder">
+                                    <p>💼 À remplir</p>
+                                </div>
+                            </div>
+
+                            <div class="profile-item">
+                                <h3>Environnement Idéal</h3>
+                                <div class="profile-placeholder">
+                                    <p>🌍 À remplir</p>
+                                </div>
                             </div>
                         </div>
                     </div>

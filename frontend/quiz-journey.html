@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAI - Quiz & Tests</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container journey-mode">
+        <!-- No Sidebar for Journey Pages -->
+
+        <!-- Main Content -->
+        <div class="main-content full-width">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <button class="header-icon-btn back-btn" title="Retour" onclick="window.location.href='/'">
+                        ← Retour
+                    </button>
+                </div>
+
+                <div class="header-center">
+                    <div class="progress-blocks">
+                        <div class="progress-block active">
+                            <span class="block-number">1</span>
+                            <span class="block-label">Te connaitre</span>
+                        </div>
+                        <div class="progress-block active">
+                            <span class="block-number">2</span>
+                            <span class="block-label">Te tester</span>
+                        </div>
+                        <div class="progress-block">
+                            <span class="block-number">3</span>
+                            <span class="block-label">Découverte</span>
+                        </div>
+                        <div class="progress-block">
+                            <span class="block-number">4</span>
+                            <span class="block-label">Evénements</span>
+                        </div>
+                        <div class="progress-block">
+                            <span class="block-number">5</span>
+                            <span class="block-label">Approf.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="header-icon-btn" id="settingsBtn">
+                        ⚙️
+                        <div class="settings-dropdown" id="settingsDropdown">
+                            <div class="dropdown-item">Style du site</div>
+                            <div class="dropdown-item">Support</div>
+                            <div class="dropdown-item">Abonnement</div>
+                            <div class="dropdown-item">Nos partenaires</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="page-header">
+                    <h1>Quiz & Tests</h1>
+                    <p>Évalue tes connaissances et teste tes compétences en ingénierie</p>
+                </div>
+
+                <!-- Quiz Container -->
+                <div class="quiz-container">
+                    <!-- Sample Questions -->
+                    <div class="quiz-section">
+                        <h2>Test 1: Fondamentaux de l'Ingénierie</h2>
+                        
+                        <div class="quiz-question">
+                            <div class="question-header">
+                                <span class="question-number">1/5</span>
+                                <div class="progress-bar-quiz">
+                                    <div class="progress-fill" style="width: 20%"></div>
+                                </div>
+                            </div>
+                            
+                            <h3>Qu'est-ce que l'ingénierie informatique ?</h3>
+                            
+                            <div class="quiz-answers">
+                                <label class="answer-option">
+                                    <input type="radio" name="q1" value="a">
+                                    <span>L'application de principes scientifiques à la conception de logiciels</span>
+                                </label>
+                                <label class="answer-option">
+                                    <input type="radio" name="q1" value="b">
+                                    <span>La création de sites web uniquement</span>
+                                </label>
+                                <label class="answer-option">
+                                    <input type="radio" name="q1" value="c">
+                                    <span>L'installation d'ordinateurs</span>
+                                </label>
+                                <label class="answer-option">
+                                    <input type="radio" name="q1" value="d">
+                                    <span>Le support technique client</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <div class="question-header">
+                                <span class="question-number">2/5</span>
+                                <div class="progress-bar-quiz">
+                                    <div class="progress-fill" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            
+                            <h3>Quel domaine t'intéresse le plus ?</h3>
+                            
+                            <div class="quiz-answers">
+                                <label class="answer-option">
+                                    <input type="radio" name="q2" value="a">
+                                    <span>Développement et programmation</span>
+                                </label>
+                                <label class="answer-option">
+                                    <input type="radio" name="q2" value="b">
+                                    <span>Design et UX/UI</span>
+                                </label>
+                                <label class="answer-option">
+                                    <input type="radio" name="q2" value="c">
+                                    <span>Data Science et AI</span>
+                                </label>
+                                <label class="answer-option">
+                                    <input type="radio" name="q2" value="d">
+                                    <span>Infrastructure et DevOps</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-actions">
+                            <button class="btn-secondary">Précédent</button>
+                            <button class="btn-primary">Suivant</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const settingsBtn = document.getElementById('settingsBtn');
+        const settingsDropdown = document.getElementById('settingsDropdown');
+
+        // Settings dropdown toggle
+        settingsBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            settingsDropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking elsewhere
+        document.addEventListener('click', function() {
+            settingsDropdown.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

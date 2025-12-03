@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVAI - Quiz & Tests</title>
+    <title>NOVAI - Mon Parcours</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <a href="/quiz.html" class="nav-item-link">
-                    <div class="nav-item active">
+                    <div class="nav-item">
                         <div class="nav-icon">🎯</div>
                         <div class="nav-label">Quiz & Tests</div>
                     </div>
@@ -59,6 +59,7 @@
                     </div>
                 </a>
             </nav>
+
         </div>
 
         <!-- Main Content -->
@@ -80,7 +81,7 @@
                             <span class="block-number">1</span>
                             <span class="block-label">Te connaitre</span>
                         </div>
-                        <div class="progress-block active">
+                        <div class="progress-block">
                             <span class="block-number">2</span>
                             <span class="block-label">Te tester</span>
                         </div>
@@ -115,89 +116,55 @@
             <!-- Content Area -->
             <div class="content-area">
                 <div class="page-header">
-                    <h1>Quiz & Tests</h1>
-                    <p>Explorez vos talents et découvrez de nouvelles opportunités</p>
+                    <h1>Mon Parcours</h1>
+                    <p>Découvre ton chemin vers une carrière passionnante en ingénierie</p>
                 </div>
 
-                <!-- Info Box -->
-                <div class="quiz-info-box">
-                    <div class="info-icon">💡</div>
-                    <div class="info-content">
-                        <h3>Quiz Personnalisés</h3>
-                        <p>Ces quiz sont générés automatiquement en fonction de votre profil et de vos réponses précédentes. Ils évoluent avec vous pour vous proposer des contenus de plus en plus pertinents et adaptés à votre parcours.</p>
-                    </div>
-                </div>
-
-                <!-- Search Bar -->
-                <div class="quiz-search">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" class="search-input" placeholder="Cherche un quiz...">
-                </div>
-
-                <!-- Quiz Grid -->
-                <div class="quiz-grid">
-                    <!-- Quiz 1: Personnalité -->
-                    <div class="quiz-card">
-                        <div class="quiz-image">
-                            <img src="./Image_Quizz/Test_Ciblier_Pour_User.jpg" alt="Quiz Personnalité" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%238B7BA8%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E📊%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="quiz-content">
-                            <div class="quiz-icon-badge">✨</div>
-                            <h3>Quiz Personnalité</h3>
-                            <p class="quiz-description">Mieux te comprendre et découvrir tes traits distinctifs. Ce quiz t'aide à identifier tes forces, tes motivations et tes préférences pour construire un avenir qui te ressemble.</p>
-                            <div class="quiz-footer">
-                                <span class="quiz-difficulty">Facile</span>
-                                <span class="quiz-time">⏱️ 10 min</span>
-                            </div>
-                        </div>
+                <!-- Journey Steps with Clickable Cards -->
+                <div class="journey-steps-container">
+                    <!-- Step 1: Te Connaître -->
+                    <div class="journey-step-card clickable" onclick="navigateToProfile()">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">👤</div>
+                        <h3>Te Connaître</h3>
+                        <p>Explore ton profil, tes goûts et tes capacités via le modèle IAG</p>
+                        <button class="step-button">Accéder</button>
                     </div>
 
-                    <!-- Quiz 2: Mathématiques -->
-                    <div class="quiz-card">
-                        <div class="quiz-image">
-                            <img src="./Image_Quizz/tableau-maths_23-2148178219.avif" alt="Quiz Mathématiques" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%238B7BA8%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E➗%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="quiz-content">
-                            <div class="quiz-icon-badge">📐</div>
-                            <h3>Quiz Mathématiques</h3>
-                            <p class="quiz-description">Te renforcer en mathématiques et découvrir des applications concrètes. Explore comment tes connaissances mathématiques peuvent te permettre de résoudre des problèmes réels et d'exceller dans tes futurs projets.</p>
-                            <div class="quiz-footer">
-                                <span class="quiz-difficulty">Moyen</span>
-                                <span class="quiz-time">⏱️ 15 min</span>
-                            </div>
-                        </div>
+                    <!-- Step 2: Te Tester -->
+                    <div class="journey-step-card disabled">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">✨</div>
+                        <h3>Te Tester</h3>
+                        <p>Participe à des tests et découvre ta personnalité professionnelle</p>
+                        <button class="step-button" disabled>À venir</button>
                     </div>
 
-                    <!-- Quiz 3: Universités -->
-                    <div class="quiz-card">
-                        <div class="quiz-image">
-                            <img src="./Image_Quizz/University.avif" alt="Quiz Universités" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%238B7BA8%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🎓%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="quiz-content">
-                            <div class="quiz-icon-badge">🏫</div>
-                            <h3>Quiz Universités</h3>
-                            <p class="quiz-description">Mieux connaître les universités que tu pourrais intégrer. Comprendre les parcours disponibles, les conditions d'admission et comment postuler aux établissements les plus adaptés à ton profil et tes ambitions.</p>
-                            <div class="quiz-footer">
-                                <span class="quiz-difficulty">Facile</span>
-                                <span class="quiz-time">⏱️ 12 min</span>
-                            </div>
-                        </div>
+                    <!-- Step 3: Découverte -->
+                    <div class="journey-step-card disabled">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">🎯</div>
+                        <h3>Découverte</h3>
+                        <p>Identifie les métiers de l'ingénierie qui te correspondent</p>
+                        <button class="step-button" disabled>À venir</button>
                     </div>
 
-                    <!-- Quiz 4: Métiers -->
-                    <div class="quiz-card">
-                        <div class="quiz-image">
-                            <img src="./Image_Quizz/Métier.jpg" alt="Quiz Métiers" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%238B7BA8%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E💼%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="quiz-content">
-                            <div class="quiz-icon-badge">🚀</div>
-                            <h3>Quiz Métiers</h3>
-                            <p class="quiz-description">Découvrir de nouveaux métiers adaptés à ta personnalité. Explore des carrières passionnantes que tu ne connaissais pas encore, trouvées spécialement pour toi en fonction de tes compétences et de tes intérêts.</p>
-                            <div class="quiz-footer">
-                                <span class="quiz-difficulty">Moyen</span>
-                                <span class="quiz-time">⏱️ 20 min</span>
-                            </div>
-                        </div>
+                    <!-- Step 4: Événements -->
+                    <div class="journey-step-card disabled">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">📅</div>
+                        <h3>Événements</h3>
+                        <p>Participe à des événements et rencontre des professionnels</p>
+                        <button class="step-button" disabled>À venir</button>
+                    </div>
+
+                    <!-- Step 5: Approfondissement -->
+                    <div class="journey-step-card disabled">
+                        <div class="step-number">5</div>
+                        <div class="step-icon">🚀</div>
+                        <h3>Approfondissement</h3>
+                        <p>Plonge plus profondément dans les spécialités de l'ingénierie</p>
+                        <button class="step-button" disabled>À venir</button>
                     </div>
                 </div>
             </div>
@@ -237,6 +204,21 @@
                 arrow.textContent = '▼';
             });
         });
+
+        // Navigate to Profile (Step 1: Te Connaître)
+        function navigateToProfile() {
+            window.location.href = '/personality-journey.html';
+        }
+
+        // Navigate to Personality Test (Step 3: Découverte)
+        function navigateToPersonality() {
+            window.location.href = '/personality-journey.html';
+        }
+
+        // Navigate to Quiz (Step 2: Te Tester)
+        function navigateToQuiz() {
+            window.location.href = '/quiz-journey.html';
+        }
     </script>
 </body>
 </html>

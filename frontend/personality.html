@@ -17,24 +17,29 @@
             </div>
 
             <nav class="nav-menu">
-                <a href="/" class="nav-item-link">
-                    <div class="nav-item">
-                        <div class="nav-icon">👤</div>
-                        <div class="nav-label">Mon Profil</div>
+                <div class="nav-dropdown">
+                    <div class="nav-item-link nav-dropdown-trigger" onclick="toggleNavDropdown(event)">
+                        <div class="nav-item">
+                            <div class="nav-icon">👤</div>
+                            <div class="nav-label">MOI</div>
+                            <div class="nav-dropdown-arrow">▼</div>
+                        </div>
                     </div>
-                </a>
-                <a href="/personality.html" class="nav-item-link">
-                    <div class="nav-item active">
-                        <div class="nav-icon">✨</div>
-                        <div class="nav-label">Test Personnalité</div>
+                    <div class="nav-dropdown-menu">
+                        <a href="/profil.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">📋</div>
+                            <div class="dropdown-label">Mon Profil</div>
+                        </a>
+                        <a href="/gouts.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">❤️</div>
+                            <div class="dropdown-label">Mes Goûts</div>
+                        </a>
+                        <a href="/capacites.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">🧠</div>
+                            <div class="dropdown-label">Mes Capacités</div>
+                        </a>
                     </div>
-                </a>
-                <a href="/chat.html" class="nav-item-link">
-                    <div class="nav-item">
-                        <div class="nav-icon">💬</div>
-                        <div class="nav-label">Chat IA</div>
-                    </div>
-                </a>
+                </div>
                 <a href="/quiz.html" class="nav-item-link">
                     <div class="nav-item">
                         <div class="nav-icon">🎯</div>
@@ -44,7 +49,13 @@
                 <a href="/events.html" class="nav-item-link">
                     <div class="nav-item">
                         <div class="nav-icon">📅</div>
-                        <div class="nav-label">Événements</div>
+                        <div class="nav-label">Mes Événements</div>
+                    </div>
+                </a>
+                <a href="/journey.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🗺️</div>
+                        <div class="nav-label">Mon Parcours</div>
                     </div>
                 </a>
             </nav>
@@ -55,14 +66,36 @@
             <!-- Header -->
             <div class="header">
                 <div class="header-left">
+                    <a href="/" class="header-icon-btn nav-home-btn active" title="Mon Parcours">
+                        🗺️
+                    </a>
                     <a href="/logout.html" class="header-icon-btn logout-btn" title="Déconnexion">
                         🚪
                     </a>
                 </div>
 
                 <div class="header-center">
-                    <div class="tagline-banner">
-                        <p>✨ NovAI : Le site qui crée des étoiles ✨</p>
+                    <div class="progress-blocks">
+                        <div class="progress-block active">
+                            <span class="block-number">1</span>
+                            <span class="block-label">Te connaitre</span>
+                        </div>
+                        <div class="progress-block">
+                            <span class="block-number">2</span>
+                            <span class="block-label">Te tester</span>
+                        </div>
+                        <div class="progress-block">
+                            <span class="block-number">3</span>
+                            <span class="block-label">Découverte</span>
+                        </div>
+                        <div class="progress-block">
+                            <span class="block-number">4</span>
+                            <span class="block-label">Evénements</span>
+                        </div>
+                        <div class="progress-block">
+                            <span class="block-number">5</span>
+                            <span class="block-label">Approf.</span>
+                        </div>
                     </div>
                 </div>
 
@@ -242,6 +275,28 @@
             console.log('✅ Personality chat listeners attached successfully!');
             console.log('👉 Try typing about your interests and clicking send');
         }
+
+        // Navigation dropdown toggle
+        function toggleNavDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.currentTarget.closest('.nav-dropdown');
+            const menu = dropdown.querySelector('.nav-dropdown-menu');
+            const arrow = dropdown.querySelector('.nav-dropdown-arrow');
+            
+            menu.classList.toggle('active');
+            arrow.textContent = menu.classList.contains('active') ? '▲' : '▼';
+        }
+
+        // Close nav dropdown when clicking a link
+        document.querySelectorAll('.nav-dropdown-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const dropdown = this.closest('.nav-dropdown');
+                const menu = dropdown.querySelector('.nav-dropdown-menu');
+                const arrow = dropdown.querySelector('.nav-dropdown-arrow');
+                menu.classList.remove('active');
+                arrow.textContent = '▼';
+            });
+        });
     </script>
 </body>
 </html>

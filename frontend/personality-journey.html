@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAI - Test de Personnalité</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container journey-mode">
+        <!-- No Sidebar for Journey Pages -->
+
+        <!-- Main Content -->
+        <div class="main-content full-width">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <button class="header-icon-btn back-btn" title="Retour" onclick="window.location.href='/'">
+                        ← Retour
+                    </button>
+                </div>
+
+                <div class="header-center">
+                    <div class="progress-blocks">
+                        <div class="progress-block active">
+                            <span class="block-number">1</span>
+                            <span class="block-label">Te connaitre</span>
+                        </div>
+                        <div class="progress-block">
+                            <span class="block-number">2</span>
+                            <span class="block-label">Te tester</span>
+                        </div>
+                        <div class="progress-block">
+                            <span class="block-number">3</span>
+                            <span class="block-label">Découverte</span>
+                        </div>
+                        <div class="progress-block">
+                            <span class="block-number">4</span>
+                            <span class="block-label">Evénements</span>
+                        </div>
+                        <div class="progress-block">
+                            <span class="block-number">5</span>
+                            <span class="block-label">Approf.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="header-icon-btn" id="settingsBtn">
+                        ⚙️
+                        <div class="settings-dropdown" id="settingsDropdown">
+                            <div class="dropdown-item">Style du site</div>
+                            <div class="dropdown-item">Support</div>
+                            <div class="dropdown-item">Abonnement</div>
+                            <div class="dropdown-item">Nos partenaires</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="page-header">
+                    <h1>Découvre ta Personnalité Professionnelle</h1>
+                    <p>Un chat interactif pour identifier les métiers de l'ingénierie qui te correspondent</p>
+                </div>
+
+                <!-- Chat Container -->
+                <div class="personality-test-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            <div class="message-content">
+                                Bonjour ! 👋 Je suis ton assistant pour découvrir les métiers de l'ingénierie qui te correspondent. 
+                                Parlons ensemble de tes intérêts, tes forces et tes objectifs. Commençons : qu'est-ce qui t'intéresse dans le domaine du numérique ?
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-area">
+                        <form onsubmit="sendMessage(event)">
+                            <div class="input-wrapper">
+                                <input 
+                                    type="text" 
+                                    id="userInput" 
+                                    placeholder="Écris ta réponse ici..." 
+                                    class="chat-input"
+                                    autocomplete="off"
+                                >
+                                <button type="submit" class="send-btn">Envoyer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let conversationHistory = [];
+        const chatMessagesContainer = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const settingsBtn = document.getElementById('settingsBtn');
+        const settingsDropdown = document.getElementById('settingsDropdown');
+
+        // Settings dropdown toggle
+        settingsBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            settingsDropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking elsewhere
+        document.addEventListener('click', function() {
+            settingsDropdown.classList.remove('active');
+        });
+
+        // Send message function
+        async function sendMessage(event) {
+            event.preventDefault();
+            const message = userInput.value.trim();
+            
+            if (!message) return;
+
+            // Add user message to chat
+            addMessage(message, 'user');
+            userInput.value = '';
+
+            // Add to conversation history
+            conversationHistory.push({ role: 'user', content: message });
+
+            // Show loading state
+            const loadingMessage = addMessage('...', 'bot');
+            loadingMessage.classList.add('loading');
+
+            try {
+                // Send to API
+                const response = await fetch('/api/chat-personality', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: message,
+                        conversationHistory: conversationHistory
+                    })
+                });
+
+                const data = await response.json();
+                
+                // Remove loading message
+                loadingMessage.remove();
+
+                if (data.reply) {
+                    // Add bot response
+                    addMessage(data.reply, 'bot');
+                    conversationHistory.push({ role: 'assistant', content: data.reply });
+                } else {
+                    addMessage('Désolé, je n\'ai pas obtenu de réponse. Essaie encore.', 'bot');
+                }
+            } catch (error) {
+                loadingMessage.remove();
+                addMessage('Erreur de connexion. Réessaie plus tard.', 'bot');
+                console.error('Error:', error);
+            }
+        }
+
+        // Add message to chat display
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.innerHTML = `<div class="message-content">${text}</div>`;
+            chatMessagesContainer.appendChild(messageDiv);
+            chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+            return messageDiv;
+        }
+
+        // Focus on input when page loads
+        userInput.focus();
+    </script>
+</body>
+</html>
