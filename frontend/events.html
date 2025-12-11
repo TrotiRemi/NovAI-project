@@ -133,8 +133,28 @@
                     <div class="welcome-subtitle">Découvrez nos prochains événements et rencontres</div>
                 </div>
 
-                <div class="events-grid" id="eventsContainer">
-                    <!-- Les événements seront chargés ici par JavaScript -->
+                <!-- Search Bar -->
+                <div class="quiz-search">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" id="eventSearch" placeholder="Chercher un événement...">
+                </div>
+
+                <!-- Section: Événements pour toi -->
+                <div class="quiz-section">
+                    <h2 class="section-title">Événements pour toi</h2>
+                    <p class="section-description">Sélection personnalisée d'événements en lien avec l'aéronautique en région parisienne</p>
+                    <div class="events-grid" id="eventsForYouContainer">
+                        <!-- Les événements personnalisés seront chargés ici par JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Section: Tous les événements -->
+                <div class="quiz-section">
+                    <h2 class="section-title">Tous les événements</h2>
+                    <p class="section-description">Découvrez l'ensemble de nos événements à venir</p>
+                    <div class="events-grid" id="eventsContainer">
+                        <!-- Les événements seront chargés ici par JavaScript -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -174,7 +194,59 @@
             });
         });
 
-        // Données des événements
+        // Événements pour toi (aéronautique - région parisienne)
+        const eventsForYou = [
+            {
+                school: "Salon du Bourget 2025",
+                date: "16-22/06/2025",
+                description: "Le plus grand salon aéronautique au monde ! Rencontrez les acteurs majeurs de l'industrie (Airbus, Dassault, Safran, Thales), assistez aux démonstrations de vol spectaculaires et découvrez les dernières innovations en aéronautique et spatial. Parc des Expositions du Bourget.",
+                img: "./Image_Event/bourget.jpg",
+                url: "https://www.siae.fr/",
+                category: "aeronautique"
+            },
+            {
+                school: "Journée Découverte ISAE-SUPAERO Paris",
+                date: "15/01/2026",
+                description: "Découvrez la formation d'ingénieur aéronautique et spatial de référence en France. Visite du campus parisien, rencontre avec les étudiants et professeurs, présentation des spécialités (structures aéronautiques, propulsion, avionique). Inscription obligatoire.",
+                img: "./Image_Event/Logo_ISAE-Supaéro.png",
+                url: "https://www.isae-supaero.fr/",
+                category: "aeronautique"
+            },
+            {
+                school: "Portes Ouvertes ESTACA Paris-Saclay",
+                date: "08/02/2026",
+                description: "École spécialisée en aéronautique, automobile et spatial. Découvrez les cursus ingénieur, les projets étudiants (drone, fusée), les partenariats avec Airbus et Safran. Démonstrations en laboratoires et simulateurs de vol. Campus Paris-Saclay.",
+                img: "./Image_Event/estaca.webp",
+                url: "https://www.estaca.fr/",
+                category: "aeronautique"
+            },
+            {
+                school: "Forum Airbus Carrières - Paris",
+                date: "20/03/2026",
+                description: "Rencontrez les recruteurs d'Airbus et découvrez les métiers de l'aéronautique : ingénieur conception, essais en vol, production, supply chain. Présentations des programmes A320, A350 et futurs projets. Opportunités de stages et alternances. Espace Champerret Paris.",
+                img: "./Image_Event/airbus.jpg",
+                url: "https://www.airbus.com/careers",
+                category: "aeronautique"
+            },
+            {
+                school: "Visite Musée de l'Air et de l'Espace",
+                date: "Tous les jours",
+                description: "Plus de 400 avions historiques au Bourget ! Découvrez l'histoire de l'aviation, des frères Wright à Concorde. Expositions interactives sur l'aéronautique et le spatial. Planétarium et simulateurs de vol. Idéal pour découvrir les métiers de l'aéro. Gratuit -26 ans.",
+                img: "./Image_Event/museedelairetdelespace.jpg",
+                url: "https://www.museeairespace.fr/",
+                category: "aeronautique"
+            },
+            {
+                school: "Conférence Dassault Aviation - Les Métiers de l'Aéro",
+                date: "12/04/2026",
+                description: "Conférence exclusive avec des ingénieurs Dassault Aviation sur les métiers de la conception d'avions (Rafale, Falcon). Présentation des parcours de formation, des projets innovants et des opportunités de carrière. Session Q&A avec les professionnels. Inscription limitée.",
+                img: "./Image_Event/dassault-aviati_logo_1746608531851.png",
+                url: "https://www.dassault-aviation.com/",
+                category: "aeronautique"
+            }
+        ];
+
+        // Données des événements généraux
         const events = [
             {
                 school: "UGE",
@@ -199,29 +271,93 @@
             }
         ];
 
-        // Fonction pour charger les événements
-        function loadEvents() {
-            const container = document.getElementById('eventsContainer');
-            container.innerHTML = events.map(event => `
+        // Fonction pour créer une carte d'événement
+        function createEventCard(event) {
+            return `
                 <div class="event-card">
                     <div class="event-image">
-                        <img src="${event.img}" alt="${event.school}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22300%22 height=%22200%22/%3E%3C/svg%3E'">
+                        <img src="${event.img}" alt="${event.school}">
                     </div>
                     <div class="event-content">
                         <h3 class="event-school">${event.school}</h3>
                         <div class="event-date">
-                            <span class="date-icon">📅</span>
+                            <img src="${event.img}" alt="Date" class="date-icon-img">
                             <span>${event.date}</span>
                         </div>
                         <p class="event-description">${event.description}</p>
                         <a href="${event.url}" target="_blank" class="event-link">En savoir plus →</a>
                     </div>
                 </div>
-            `).join('');
+            `;
+        }
+
+        // Fonction pour charger les événements personnalisés
+        function loadEventsForYou() {
+            const container = document.getElementById('eventsForYouContainer');
+            container.innerHTML = eventsForYou.map(event => createEventCard(event)).join('');
+        }
+
+        // Fonction pour charger les événements généraux
+        function loadEvents() {
+            const container = document.getElementById('eventsContainer');
+            container.innerHTML = events.map(event => createEventCard(event)).join('');
+        }
+
+        // Fonction de recherche
+        function searchEvents() {
+            const searchTerm = document.getElementById('eventSearch').value.toLowerCase();
+            
+            // Filtrer les événements pour toi
+            const filteredForYou = eventsForYou.filter(event => 
+                event.school.toLowerCase().includes(searchTerm) || 
+                event.description.toLowerCase().includes(searchTerm)
+            );
+            
+            // Filtrer les événements généraux
+            const filteredGeneral = events.filter(event => 
+                event.school.toLowerCase().includes(searchTerm) || 
+                event.description.toLowerCase().includes(searchTerm)
+            );
+            
+            // Mettre à jour l'affichage
+            document.getElementById('eventsForYouContainer').innerHTML = 
+                filteredForYou.map(event => createEventCard(event)).join('');
+            document.getElementById('eventsContainer').innerHTML = 
+                filteredGeneral.map(event => createEventCard(event)).join('');
         }
 
         // Charger les événements au chargement de la page
-        document.addEventListener('DOMContentLoaded', loadEvents);
+        document.addEventListener('DOMContentLoaded', function() {
+            loadEventsForYou();
+            loadEvents();
+            
+            // Ajouter l'écouteur pour la recherche
+            document.getElementById('eventSearch').addEventListener('input', searchEvents);
+        });
     </script>
+
+    <style>
+        .quiz-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2d2d2d;
+            margin-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        .section-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .quiz-search {
+            margin-bottom: 30px;
+        }
+    </style>
 </body>
 </html>
