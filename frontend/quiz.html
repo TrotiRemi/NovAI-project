@@ -17,6 +17,12 @@
             </div>
 
             <nav class="nav-menu">
+                <a href="/journey.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏠</div>
+                        <div class="nav-label">Accueil</div>
+                    </div>
+                </a>
                 <div class="nav-dropdown">
                     <div class="nav-item-link nav-dropdown-trigger" onclick="toggleNavDropdown(event)">
                         <div class="nav-item">
@@ -38,6 +44,10 @@
                             <div class="dropdown-icon">🧠</div>
                             <div class="dropdown-label">Mes Capacités</div>
                         </a>
+                        <a href="/personality-journey.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">✨</div>
+                            <div class="dropdown-label">Test de Personnalité</div>
+                        </a>
                     </div>
                 </div>
                 <a href="/quiz.html" class="nav-item-link">
@@ -46,16 +56,22 @@
                         <div class="nav-label">Quiz & Tests</div>
                     </div>
                 </a>
+                <a href="/entreprises.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏢</div>
+                        <div class="nav-label">Approfondir le monde du travail</div>
+                    </div>
+                </a>
+                <a href="/secteurs.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🌐</div>
+                        <div class="nav-label">Découverte de secteurs</div>
+                    </div>
+                </a>
                 <a href="/events.html" class="nav-item-link">
                     <div class="nav-item">
                         <div class="nav-icon">📅</div>
                         <div class="nav-label">Mes Événements</div>
-                    </div>
-                </a>
-                <a href="/journey.html" class="nav-item-link">
-                    <div class="nav-item">
-                        <div class="nav-icon">🗺️</div>
-                        <div class="nav-label">Mon Parcours</div>
                     </div>
                 </a>
             </nav>
@@ -66,36 +82,33 @@
             <!-- Header -->
             <div class="header">
                 <div class="header-left">
-                    <a href="/" class="header-icon-btn nav-home-btn active" title="Mon Parcours">
-                        🗺️
-                    </a>
                     <a href="/logout.html" class="header-icon-btn logout-btn" title="Déconnexion">
-                        🚪
+                        Déconnexion
                     </a>
                 </div>
 
                 <div class="header-center">
                     <div class="progress-blocks">
-                        <div class="progress-block active">
+                        <a href="/personality-journey.html" class="progress-block active" style="text-decoration: none; color: inherit;">
                             <span class="block-number">1</span>
                             <span class="block-label">Te connaitre</span>
-                        </div>
-                        <div class="progress-block active">
+                        </a>
+                        <a href="/quiz.html" class="progress-block active" style="text-decoration: none; color: inherit;">
                             <span class="block-number">2</span>
                             <span class="block-label">Te tester</span>
-                        </div>
-                        <div class="progress-block">
+                        </a>
+                        <a href="/secteurs.html" class="progress-block" style="text-decoration: none; color: inherit;">
                             <span class="block-number">3</span>
                             <span class="block-label">Découverte</span>
-                        </div>
-                        <div class="progress-block">
+                        </a>
+                        <a href="/events.html" class="progress-block" style="text-decoration: none; color: inherit;">
                             <span class="block-number">4</span>
                             <span class="block-label">Evénements</span>
-                        </div>
-                        <div class="progress-block">
+                        </a>
+                        <a href="/entreprises.html" class="progress-block" style="text-decoration: none; color: inherit;">
                             <span class="block-number">5</span>
                             <span class="block-label">Approf.</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
@@ -134,8 +147,66 @@
                     <input type="text" class="search-input" placeholder="Cherche un quiz...">
                 </div>
 
-                <!-- Quiz Grid -->
-                <div class="quiz-grid">
+                <!-- Section: Quiz pour vous -->
+                <div class="quiz-section">
+                    <h2 class="section-title">Quiz pour vous</h2>
+                    <p class="section-description">Sélection personnalisée en fonction de votre profil et de vos intérêts</p>
+                    <div class="quiz-grid">
+                        <!-- Quiz Aviation -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Quizz/aviation.jpg" alt="Quiz Métiers de l'Aviation" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23004B87%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E✈️%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">✈️</div>
+                                <h3>Quiz Métiers de l'Aviation</h3>
+                                <p class="quiz-description">Découvre les carrières dans l'aviation : pilote de ligne, contrôleur aérien, mécanicien aéronautique, ingénieur avionique. Explore les formations nécessaires et les opportunités dans ce secteur passionnant qui fait rêver.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Moyen</span>
+                                    <span class="quiz-time">⏱️ 17 min</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Ingénieur Aéronautique -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Quizz/ingenieur-aeronautique.jpg" alt="Quiz Ingénieur Aéronautique" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23FF6600%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🛩️%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">🛩️</div>
+                                <h3>Quiz Ingénieur Aéronautique</h3>
+                                <p class="quiz-description">Plonge dans l'univers de l'ingénierie aéronautique : conception d'avions, propulsion, structures, systèmes embarqués. Découvre les compétences requises et les écoles d'ingénieurs spécialisées (ISAE-SUPAERO, ENAC...).</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Difficile</span>
+                                    <span class="quiz-time">⏱️ 20 min</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Airbus & Industrie Aéronautique -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Quizz/airbus-industrie.jpg" alt="Quiz Airbus & Industrie" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%230066CC%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🛫%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">🛫</div>
+                                <h3>Quiz Airbus & Industrie Aéronautique</h3>
+                                <p class="quiz-description">Teste tes connaissances sur l'industrie aéronautique française et européenne : Airbus, Safran, Dassault Aviation. Découvre les opportunités de carrière dans ce secteur d'excellence technologique.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Moyen</span>
+                                    <span class="quiz-time">⏱️ 16 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: Tous les quiz -->
+                <div class="quiz-section">
+                    <h2 class="section-title">Tous les quiz</h2>
+                    <p class="section-description">Explorez notre collection complète de quiz et tests</p>
+                    <div class="quiz-grid">
                     <!-- Quiz 1: Personnalité -->
                     <div class="quiz-card">
                         <div class="quiz-image">
@@ -152,7 +223,231 @@
                         </div>
                     </div>
 
-                    <!-- Quiz 2: Mathématiques -->
+                    <!-- Quiz 2: Métiers du Numérique -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/metiers-numerique.jpg" alt="Quiz Métiers du Numérique" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%230066FF%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E💻%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">💻</div>
+                            <h3>Quiz Métiers du Numérique</h3>
+                            <p class="quiz-description">Découvre les métiers de la tech : développeur, data scientist, designer UX/UI, chef de projet digital. Teste tes connaissances et explore les carrières du secteur numérique qui recrutent massivement.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Moyen</span>
+                                <span class="quiz-time">⏱️ 15 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 3: Métier d'Ingénieur -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/ingenieur.jpg" alt="Quiz Métier d'Ingénieur" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23FF6600%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E⚙️%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">⚙️</div>
+                            <h3>Quiz Métier d'Ingénieur</h3>
+                            <p class="quiz-description">Plonge dans l'univers de l'ingénierie : aéronautique, mécanique, électronique, génie civil. Comprends les spécialités, les missions et les compétences requises pour devenir ingénieur.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Moyen</span>
+                                <span class="quiz-time">⏱️ 18 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 4: Métiers de la Santé -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/metiers-sante.jpg" alt="Quiz Métiers de la Santé" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23FF4444%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🏥%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">⚕️</div>
+                            <h3>Quiz Métiers de la Santé</h3>
+                            <p class="quiz-description">Explore les professions médicales et paramédicales : médecin, infirmier, pharmacien, kinésithérapeute. Découvre les parcours de formation et les réalités de ces métiers qui sauvent des vies.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Moyen</span>
+                                <span class="quiz-time">⏱️ 16 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 5: Architecte -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/architecte.jpg" alt="Quiz Métier Architecte" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23795548%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🏗️%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🏗️</div>
+                            <h3>Quiz Métier Architecte</h3>
+                            <p class="quiz-description">Tout savoir sur le métier d'architecte : conception de bâtiments, gestion de projets, créativité et technique. Teste tes connaissances sur ce métier qui façonne nos villes et notre environnement.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Facile</span>
+                                <span class="quiz-time">⏱️ 12 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 6: Métiers du Droit -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/metiers-droit.jpg" alt="Quiz Métiers du Droit" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23000080%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E⚖️%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">⚖️</div>
+                            <h3>Quiz Métiers du Droit</h3>
+                            <p class="quiz-description">Découvre les professions juridiques : avocat, magistrat, juriste d'entreprise, notaire. Comprends les études nécessaires, les spécialisations possibles et les opportunités de carrière.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Moyen</span>
+                                <span class="quiz-time">⏱️ 17 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 7: Métiers Créatifs -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/metiers-creatifs.jpg" alt="Quiz Métiers Créatifs" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%239C27B0%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🎨%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🎨</div>
+                            <h3>Quiz Métiers Créatifs</h3>
+                            <p class="quiz-description">Explore les carrières artistiques : graphiste, designer, photographe, réalisateur, scénariste. Découvre comment transformer ta passion créative en profession épanouissante.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Facile</span>
+                                <span class="quiz-time">⏱️ 14 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 8: Journaliste -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/journaliste.jpg" alt="Quiz Métier Journaliste" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23607D8B%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E📰%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">📰</div>
+                            <h3>Quiz Métier Journaliste</h3>
+                            <p class="quiz-description">Comprends le métier de journaliste : enquêtes, reportages, presse écrite, audiovisuelle ou web. Découvre les défis de cette profession essentielle à la démocratie et à l'information.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Facile</span>
+                                <span class="quiz-time">⏱️ 13 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 9: Écoles d'Ingénieurs -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/ecoles-ingenieurs.jpg" alt="Quiz Écoles d'Ingénieurs" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23004B87%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🎓%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🎓</div>
+                            <h3>Quiz Écoles d'Ingénieurs</h3>
+                            <p class="quiz-description">Teste tes connaissances sur les grandes écoles d'ingénieurs françaises : admission, spécialités, débouchés. Découvre quelle école correspond le mieux à ton profil et tes ambitions.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Moyen</span>
+                                <span class="quiz-time">⏱️ 15 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 10: Écoles de Commerce -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/ecoles-commerce.jpg" alt="Quiz Écoles de Commerce" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23228B22%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E💼%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">💼</div>
+                            <h3>Quiz Écoles de Commerce</h3>
+                            <p class="quiz-description">Explore les business schools : HEC, ESSEC, ESCP... Comprends leurs programmes, leurs spécialisations (finance, marketing, entrepreneuriat) et les opportunités de carrière internationale.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Moyen</span>
+                                <span class="quiz-time">⏱️ 16 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 11: Universités Françaises -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/University.avif" alt="Quiz Universités" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%238B7BA8%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🏫%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🏫</div>
+                            <h3>Quiz Universités Françaises</h3>
+                            <p class="quiz-description">Découvre les universités françaises : Sorbonne, Paris-Saclay, Lyon, Bordeaux... Comprends l'organisation des études universitaires, les licences, masters et doctorats disponibles.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Facile</span>
+                                <span class="quiz-time">⏱️ 12 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 12: IUT et BTS -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/iut-bts.jpg" alt="Quiz IUT et BTS" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23FF9800%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E📚%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">📚</div>
+                            <h3>Quiz IUT et BTS</h3>
+                            <p class="quiz-description">Tout savoir sur les formations courtes professionnalisantes : IUT (BUT) et BTS. Découvre les spécialités, l'alternance, les poursuites d'études et l'insertion professionnelle rapide.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Facile</span>
+                                <span class="quiz-time">⏱️ 14 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 13: Sciences Po -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/sciences-po.jpg" alt="Quiz Sciences Po" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23C41E3A%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🏛️%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🏛️</div>
+                            <h3>Quiz Sciences Po</h3>
+                            <p class="quiz-description">Explore Sciences Po Paris et les IEP de région : admission, programmes, doubles diplômes internationaux. Découvre ces écoles prestigieuses formant aux métiers de la politique, du journalisme et du management public.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Moyen</span>
+                                <span class="quiz-time">⏱️ 15 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 14: Écoles d'Art et Design -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/ecoles-art.jpg" alt="Quiz Écoles d'Art" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23E91E63%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🖼️%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🖼️</div>
+                            <h3>Quiz Écoles d'Art et Design</h3>
+                            <p class="quiz-description">Découvre les Beaux-Arts, ENSAD, écoles de design graphique, mode et architecture intérieure. Comprends les concours d'entrée, les portfolios requis et les débouchés créatifs.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Facile</span>
+                                <span class="quiz-time">⏱️ 13 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 15: Polytechnique -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Quizz/polytechnique.jpg" alt="Quiz Polytechnique" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23FF0000%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E⭐%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">⭐</div>
+                            <h3>Quiz École Polytechnique</h3>
+                            <p class="quiz-description">Tout savoir sur l'X, école d'élite française : concours d'admission exigeant, formation scientifique d'excellence, vie sur le campus de Palaiseau et carrières prestigieuses des diplômés.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Difficile</span>
+                                <span class="quiz-time">⏱️ 18 min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz 16: Mathématiques -->
                     <div class="quiz-card">
                         <div class="quiz-image">
                             <img src="./Image_Quizz/tableau-maths_23-2148178219.avif" alt="Quiz Mathématiques" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%238B7BA8%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E➗%3C/text%3E%3C/svg%3E'">
@@ -167,42 +462,30 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Quiz 3: Universités -->
-                    <div class="quiz-card">
-                        <div class="quiz-image">
-                            <img src="./Image_Quizz/University.avif" alt="Quiz Universités" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%238B7BA8%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🎓%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="quiz-content">
-                            <div class="quiz-icon-badge">🏫</div>
-                            <h3>Quiz Universités</h3>
-                            <p class="quiz-description">Mieux connaître les universités que tu pourrais intégrer. Comprendre les parcours disponibles, les conditions d'admission et comment postuler aux établissements les plus adaptés à ton profil et tes ambitions.</p>
-                            <div class="quiz-footer">
-                                <span class="quiz-difficulty">Facile</span>
-                                <span class="quiz-time">⏱️ 12 min</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quiz 4: Métiers -->
-                    <div class="quiz-card">
-                        <div class="quiz-image">
-                            <img src="./Image_Quizz/Métier.jpg" alt="Quiz Métiers" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%238B7BA8%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E💼%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="quiz-content">
-                            <div class="quiz-icon-badge">🚀</div>
-                            <h3>Quiz Métiers</h3>
-                            <p class="quiz-description">Découvrir de nouveaux métiers adaptés à ta personnalité. Explore des carrières passionnantes que tu ne connaissais pas encore, trouvées spécialement pour toi en fonction de tes compétences et de tes intérêts.</p>
-                            <div class="quiz-footer">
-                                <span class="quiz-difficulty">Moyen</span>
-                                <span class="quiz-time">⏱️ 20 min</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <style>
+        .quiz-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2d2d2d;
+            margin-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        .section-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+    </style>
 
     <script>
         // Settings dropdown toggle

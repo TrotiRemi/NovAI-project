@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAI - Découverte Professionnelle</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="logo.png" alt="NOVAI Logo" class="logo-image">
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="/journey.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏠</div>
+                        <div class="nav-label">Accueil</div>
+                    </div>
+                </a>
+                <div class="nav-dropdown">
+                    <div class="nav-item-link nav-dropdown-trigger" onclick="toggleNavDropdown(event)">
+                        <div class="nav-item">
+                            <div class="nav-icon">👤</div>
+                            <div class="nav-label">MOI</div>
+                            <div class="nav-dropdown-arrow">▼</div>
+                        </div>
+                    </div>
+                    <div class="nav-dropdown-menu">
+                        <a href="/profil.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">📋</div>
+                            <div class="dropdown-label">Mon Profil</div>
+                        </a>
+                        <a href="/gouts.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">❤️</div>
+                            <div class="dropdown-label">Mes Goûts</div>
+                        </a>
+                        <a href="/capacites.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">🧠</div>
+                            <div class="dropdown-label">Mes Capacités</div>
+                        </a>
+                        <a href="/personality-journey.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">✨</div>
+                            <div class="dropdown-label">Test de Personnalité</div>
+                        </a>
+                    </div>
+                </div>
+                <a href="/quiz.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🎯</div>
+                        <div class="nav-label">Quiz & Tests</div>
+                    </div>
+                </a>
+                <a href="/entreprises.html" class="nav-item-link">
+                    <div class="nav-item active">
+                        <div class="nav-icon">🏢</div>
+                        <div class="nav-label">Approfondir le monde du travail</div>
+                    </div>
+                </a>
+                <a href="/secteurs.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🌐</div>
+                        <div class="nav-label">Découverte de secteurs</div>
+                    </div>
+                </a>
+                <a href="/events.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">📅</div>
+                        <div class="nav-label">Mes Événements</div>
+                    </div>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <a href="/logout.html" class="header-icon-btn logout-btn" title="Déconnexion">
+                        Déconnexion
+                    </a>
+                </div>
+
+                <div class="header-center">
+                    <div class="progress-blocks">
+                        <a href="/personality-journey.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">1</span>
+                            <span class="block-label">Te connaitre</span>
+                        </a>
+                        <a href="/quiz.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">2</span>
+                            <span class="block-label">Te tester</span>
+                        </a>
+                        <a href="/secteurs.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">3</span>
+                            <span class="block-label">Découverte</span>
+                        </a>
+                        <a href="/events.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">4</span>
+                            <span class="block-label">Evénements</span>
+                        </a>
+                        <a href="/entreprises.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">5</span>
+                            <span class="block-label">Approf.</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="header-icon-btn" id="settingsBtn">
+                        ⚙️
+                        <div class="settings-dropdown" id="settingsDropdown">
+                            <div class="dropdown-item">Style du site</div>
+                            <div class="dropdown-item">Support</div>
+                            <div class="dropdown-item">Abonnement</div>
+                            <div class="dropdown-item">Nos partenaires</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="page-header">
+                    <h1>Découverte du Monde Professionnel</h1>
+                    <p>Explore les entreprises qui correspondent à ton profil et tes ambitions</p>
+                </div>
+
+                <!-- Info Box -->
+                <div class="quiz-info-box">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h3>Entreprises Personnalisées</h3>
+                        <p>Cette sélection d'entreprises est générée automatiquement en fonction de ton profil, tes compétences et tes intérêts. Découvre des opportunités professionnelles qui correspondent à tes aspirations et explore les secteurs qui te passionnent.</p>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="quiz-search">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Cherche une entreprise...">
+                </div>
+
+                <!-- Section: Entreprises pour vous -->
+                <div class="quiz-section">
+                    <h2 class="section-title">Entreprises pour vous</h2>
+                    <p class="section-description">Sélection personnalisée d'entreprises correspondant à votre profil et vos intérêts</p>
+                    <div class="quiz-grid">
+                        <!-- Airbus -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Entreprises/airbus.jpg" alt="Airbus" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23004B87%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E✈️%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">🛫</div>
+                                <h3>Airbus</h3>
+                                <p class="quiz-description">Constructeur aéronautique européen majeur, pionnier de l'aviation commerciale et spatiale. Airbus conçoit les avions du futur et repousse les limites de l'ingénierie. Participe à des projets qui font rêver l'humanité.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Aéronautique</span>
+                                    <span class="quiz-time">🌍 International</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dassault Aviation -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Entreprises/dassault-aviation.jpg" alt="Dassault Aviation" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23003366%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🛩️%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">🛩️</div>
+                                <h3>Dassault Aviation</h3>
+                                <p class="quiz-description">Constructeur français d'avions militaires (Rafale, Mirage) et civils (Falcon). Leader mondial dans l'aviation d'affaires et la défense. Expertise reconnue en ingénierie aéronautique de haute technologie.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Aviation & Défense</span>
+                                    <span class="quiz-time">🇫🇷 France</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Safran -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Entreprises/safran.jpg" alt="Safran" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23E30613%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E⚙️%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">⚙️</div>
+                                <h3>Safran</h3>
+                                <p class="quiz-description">Leader mondial des moteurs d'avion et équipements aérospatiaux. Safran conçoit et produit des technologies de pointe pour l'aviation civile et militaire. Innovation constante en propulsion et systèmes embarqués.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Aérospatiale</span>
+                                    <span class="quiz-time">🌍 International</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thales -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Entreprises/thales.jpg" alt="Thales" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%2300256C%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🛡️%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">🛡️</div>
+                                <h3>Thales</h3>
+                                <p class="quiz-description">Groupe d'électronique spécialisé dans l'aérospatiale, la défense, la sécurité et le transport. Thales développe des systèmes critiques : avionique, radar, cybersécurité. Technologies de défense et sécurité de pointe.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Défense & Sécurité</span>
+                                    <span class="quiz-time">🌍 International</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Boeing -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Entreprises/boeing.jpg" alt="Boeing" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%230033A0%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🛫%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">🛫</div>
+                                <h3>Boeing</h3>
+                                <p class="quiz-description">Géant américain de l'aéronautique et leader mondial de l'aviation commerciale et militaire. Boeing conçoit les avions iconiques (737, 777, 787) et développe des technologies spatiales. Opportunités internationales dans l'ingénierie aérospatiale.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Aéronautique</span>
+                                    <span class="quiz-time">🌍 International</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Liebherr Aerospace -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Entreprises/liebherr.jpg" alt="Liebherr Aerospace" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23FFD700%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🔧%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">🔧</div>
+                                <h3>Liebherr Aerospace</h3>
+                                <p class="quiz-description">Équipementier aéronautique de premier plan spécialisé dans les systèmes de vol et d'atterrissage. Liebherr fournit Airbus, Boeing et autres constructeurs majeurs. Innovation en ingénierie de précision pour l'aviation.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Équipements Aéro</span>
+                                    <span class="quiz-time">🌍 International</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: Toutes les entreprises -->
+                <div class="quiz-section">
+                    <h2 class="section-title">Toutes les entreprises</h2>
+                    <p class="section-description">Explorez notre collection complète d'entreprises partenaires</p>
+                    <div class="quiz-grid">
+                    <!-- Orange -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Entreprises/orange.jpg" alt="Orange" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23FF7900%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🟠%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">📱</div>
+                            <h3>Orange</h3>
+                            <p class="quiz-description">Leader des télécommunications en France et en Europe. Orange offre des opportunités dans les réseaux, le digital, la cybersécurité et l'innovation technologique. Rejoins une entreprise qui façonne l'avenir de la connectivité.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Télécommunications</span>
+                                <span class="quiz-time">🌍 International</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dassault Systèmes -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Entreprises/dassault.jpg" alt="Dassault Systèmes" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%230066CC%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E✈️%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🛩️</div>
+                            <h3>Dassault Systèmes</h3>
+                            <p class="quiz-description">Pionnier mondial des solutions 3D et de simulation. Dassault Systèmes révolutionne la conception de produits dans l'aéronautique, l'automobile et bien d'autres secteurs. Crée les innovations de demain avec des technologies de pointe.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Industrie & Tech</span>
+                                <span class="quiz-time">🌍 International</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Samsung -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Entreprises/samsung.jpg" alt="Samsung" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%231428A0%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E📱%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">📺</div>
+                            <h3>Samsung</h3>
+                            <p class="quiz-description">Géant sud-coréen de l'électronique et leader mondial des smartphones et téléviseurs. Samsung innove dans l'intelligence artificielle, les semi-conducteurs et les technologies mobiles. Participe à la révolution technologique mondiale.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Électronique & Tech</span>
+                                <span class="quiz-time">🌍 International</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ubisoft -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Entreprises/ubisoft.jpg" alt="Ubisoft" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23000000%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🎮%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🎮</div>
+                            <h3>Ubisoft</h3>
+                            <p class="quiz-description">Créateur français de jeux vidéo mondialement connus comme Assassin's Creed et Just Dance. Ubisoft combine créativité artistique et technologies avancées. Rejoins une équipe passionnée qui crée des expériences de divertissement uniques.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Jeux Vidéo</span>
+                                <span class="quiz-time">🌍 International</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- L'Oréal -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Entreprises/loreal.jpg" alt="L'Oréal" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23000000%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E💄%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">✨</div>
+                            <h3>L'Oréal</h3>
+                            <p class="quiz-description">Leader mondial de la beauté et des cosmétiques. L'Oréal combine recherche scientifique, marketing innovant et engagement durable. Explore des carrières alliant créativité, science et impact social dans l'univers de la beauté.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Beauté & Luxe</span>
+                                <span class="quiz-time">🌍 International</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spotify -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Entreprises/spotify.jpg" alt="Spotify" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%231DB954%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🎵%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🎵</div>
+                            <h3>Spotify</h3>
+                            <p class="quiz-description">Plateforme de streaming audio leader mondial. Spotify révolutionne l'écoute musicale grâce à l'intelligence artificielle et la personnalisation. Rejoins une entreprise innovante qui connecte les artistes et les auditeurs du monde entier.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Streaming & Tech</span>
+                                <span class="quiz-time">🌍 International</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Renault -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Entreprises/renault.jpg" alt="Renault" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23FFCC00%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🚗%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🚙</div>
+                            <h3>Renault</h3>
+                            <p class="quiz-description">Constructeur automobile français pionnier de la mobilité électrique. Renault innove dans les véhicules connectés, autonomes et durables. Contribue à la transformation de l'industrie automobile vers un avenir plus vert.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Automobile</span>
+                                <span class="quiz-time">🌍 International</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .quiz-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2d2d2d;
+            margin-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        .section-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+    </style>
+
+    <script>
+        // Settings dropdown toggle
+        document.getElementById('settingsBtn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('settingsDropdown').classList.toggle('active');
+        });
+
+        // Close dropdown when clicking elsewhere
+        document.addEventListener('click', function() {
+            document.getElementById('settingsDropdown').classList.remove('active');
+        });
+
+        // Navigation dropdown toggle
+        function toggleNavDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.currentTarget.closest('.nav-dropdown');
+            const menu = dropdown.querySelector('.nav-dropdown-menu');
+            const arrow = dropdown.querySelector('.nav-dropdown-arrow');
+            
+            menu.classList.toggle('active');
+            arrow.textContent = menu.classList.contains('active') ? '▲' : '▼';
+        }
+
+        // Close nav dropdown when clicking a link
+        document.querySelectorAll('.nav-dropdown-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const dropdown = this.closest('.nav-dropdown');
+                const menu = dropdown.querySelector('.nav-dropdown-menu');
+                const arrow = dropdown.querySelector('.nav-dropdown-arrow');
+                menu.classList.remove('active');
+                arrow.textContent = '▼';
+            });
+        });
+
+        // Search functionality
+        document.querySelector('.search-input').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.quiz-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('.quiz-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

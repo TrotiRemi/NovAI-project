@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAI - Découverte de Secteurs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="logo.png" alt="NOVAI Logo" class="logo-image">
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="/journey.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏠</div>
+                        <div class="nav-label">Accueil</div>
+                    </div>
+                </a>
+                <div class="nav-dropdown">
+                    <div class="nav-item-link nav-dropdown-trigger" onclick="toggleNavDropdown(event)">
+                        <div class="nav-item">
+                            <div class="nav-icon">👤</div>
+                            <div class="nav-label">MOI</div>
+                            <div class="nav-dropdown-arrow">▼</div>
+                        </div>
+                    </div>
+                    <div class="nav-dropdown-menu">
+                        <a href="/profil.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">📋</div>
+                            <div class="dropdown-label">Mon Profil</div>
+                        </a>
+                        <a href="/gouts.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">❤️</div>
+                            <div class="dropdown-label">Mes Goûts</div>
+                        </a>
+                        <a href="/capacites.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">🧠</div>
+                            <div class="dropdown-label">Mes Capacités</div>
+                        </a>
+                        <a href="/personality-journey.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">✨</div>
+                            <div class="dropdown-label">Test de Personnalité</div>
+                        </a>
+                    </div>
+                </div>
+                <a href="/quiz.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🎯</div>
+                        <div class="nav-label">Quiz & Tests</div>
+                    </div>
+                </a>
+                <a href="/entreprises.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏢</div>
+                        <div class="nav-label">Approfondir le monde du travail</div>
+                    </div>
+                </a>
+                <a href="/secteurs.html" class="nav-item-link">
+                    <div class="nav-item active">
+                        <div class="nav-icon">🌐</div>
+                        <div class="nav-label">Découverte de secteurs</div>
+                    </div>
+                </a>
+                <a href="/events.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">📅</div>
+                        <div class="nav-label">Mes Événements</div>
+                    </div>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <a href="/logout.html" class="header-icon-btn logout-btn" title="Déconnexion">
+                        Déconnexion
+                    </a>
+                </div>
+
+                <div class="header-center">
+                    <div class="progress-blocks">
+                        <a href="/personality-journey.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">1</span>
+                            <span class="block-label">Te connaitre</span>
+                        </a>
+                        <a href="/quiz.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">2</span>
+                            <span class="block-label">Te tester</span>
+                        </a>
+                        <a href="/secteurs.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">3</span>
+                            <span class="block-label">Découverte</span>
+                        </a>
+                        <a href="/events.html" class="progress-block" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">4</span>
+                            <span class="block-label">Evénements</span>
+                        </a>
+                        <a href="/entreprises.html" class="progress-block" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">5</span>
+                            <span class="block-label">Approf.</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="header-icon-btn" id="settingsBtn">
+                        ⚙️
+                        <div class="settings-dropdown" id="settingsDropdown">
+                            <div class="dropdown-item">Style du site</div>
+                            <div class="dropdown-item">Support</div>
+                            <div class="dropdown-item">Abonnement</div>
+                            <div class="dropdown-item">Nos partenaires</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="page-header">
+                    <h1>Découverte des Secteurs d'Activité</h1>
+                    <p>Explore les domaines professionnels qui correspondent à tes intérêts et compétences</p>
+                </div>
+
+                <!-- Info Box -->
+                <div class="quiz-info-box">
+                    <div class="info-icon">💡</div>
+                    <div class="info-content">
+                        <h3>Secteurs Personnalisés</h3>
+                        <p>Cette sélection de secteurs d'activité est générée automatiquement en fonction de ton profil et de tes aspirations. Découvre les domaines professionnels qui offrent les meilleures opportunités pour ton avenir et explore des carrières qui te correspondent.</p>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="quiz-search">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Cherche un secteur...">
+                </div>
+
+                <!-- Section: Secteurs pour vous -->
+                <div class="quiz-section">
+                    <h2 class="section-title">Secteurs d'activité pour vous</h2>
+                    <p class="section-description">Sélection personnalisée de secteurs correspondant à votre profil et vos aspirations</p>
+                    <div class="quiz-grid">
+                        <!-- Aéronautique & Spatial -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Secteurs/aeronautique.jpg" alt="Aéronautique & Spatial" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23004B87%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E✈️%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">✈️</div>
+                                <h3>Aéronautique & Spatial</h3>
+                                <p class="quiz-description">Conception d'avions, lanceurs spatiaux, satellites, drones. Un secteur d'excellence qui repousse les limites de l'ingénierie. Participe aux projets qui font rêver : Airbus, Ariane, Mars 2020. Innovation et haute technologie.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Haute technologie</span>
+                                    <span class="quiz-time">🚀 Prestigieux</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Défense & Sécurité -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Secteurs/defense.jpg" alt="Défense & Sécurité" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%2300256C%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🛡️%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">🛡️</div>
+                                <h3>Défense & Sécurité</h3>
+                                <p class="quiz-description">Systèmes de défense, cybersécurité, renseignement, armement, technologies militaires. Secteur stratégique pour la souveraineté nationale. Travaille sur des projets confidentiels avec les technologies les plus avancées.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Stratégique</span>
+                                    <span class="quiz-time">🔒 Confidentiel</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ingénierie Industrielle -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Secteurs/ingenierie-industrielle.jpg" alt="Ingénierie Industrielle" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23FF6600%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E⚙️%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">⚙️</div>
+                                <h3>Ingénierie Industrielle</h3>
+                                <p class="quiz-description">Conception de systèmes industriels, automatisation, robotique, production. Optimise les processus de fabrication et développe les usines du futur. Alliance entre mécanique, électronique et informatique industrielle.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Technique</span>
+                                    <span class="quiz-time">🔧 Innovation</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transport Aérien -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Secteurs/transport-aerien.jpg" alt="Transport Aérien" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%2300BCD4%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🛫%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">🛫</div>
+                                <h3>Transport Aérien</h3>
+                                <p class="quiz-description">Compagnies aériennes, aéroports, contrôle aérien, maintenance aéronautique. Gère le trafic aérien mondial et assure la sécurité des vols. Métiers variés : pilotes, contrôleurs, ingénieurs, gestionnaires.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Opérationnel</span>
+                                    <span class="quiz-time">🌍 International</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Systèmes Embarqués -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Secteurs/systemes-embarques.jpg" alt="Systèmes Embarqués" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23673AB7%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🔌%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">🔌</div>
+                                <h3>Systèmes Embarqués</h3>
+                                <p class="quiz-description">Électronique et logiciel embarqués dans avions, voitures, satellites. Développe les cerveaux des machines modernes. Temps réel, sécurité critique, optimisation extrême. Secteur clé pour l'aéronautique et l'automobile.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Spécialisé</span>
+                                    <span class="quiz-time">💻 High-tech</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Matériaux Composites -->
+                        <div class="quiz-card">
+                            <div class="quiz-image">
+                                <img src="./Image_Secteurs/materiaux.jpg" alt="Matériaux Composites" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23795548%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🧪%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="quiz-content">
+                                <div class="quiz-icon-badge">🧪</div>
+                                <h3>Matériaux Composites</h3>
+                                <p class="quiz-description">Recherche et développement de matériaux légers et résistants pour l'aéronautique. Composites carbone, alliages innovants, nanotechnologies. Réduis le poids des avions pour économiser du carburant et réduire les émissions.</p>
+                                <div class="quiz-footer">
+                                    <span class="quiz-difficulty">Recherche</span>
+                                    <span class="quiz-time">🔬 Innovation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: Tous les secteurs -->
+                <div class="quiz-section">
+                    <h2 class="section-title">Tous les secteurs d'activité</h2>
+                    <p class="section-description">Explorez notre collection complète de secteurs professionnels</p>
+                    <div class="quiz-grid">
+                    <!-- Technologie & Informatique -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Secteurs/tech.jpg" alt="Technologie & Informatique" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%230066FF%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E💻%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">💻</div>
+                            <h3>Technologie & Informatique</h3>
+                            <p class="quiz-description">Développement logiciel, intelligence artificielle, cybersécurité, data science. Ce secteur en pleine expansion offre des opportunités infinies pour innover et créer les technologies de demain. Participe à la révolution numérique.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Innovation</span>
+                                <span class="quiz-time">🚀 Forte demande</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Santé & Médical -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Secteurs/sante.jpg" alt="Santé & Médical" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23FF4444%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🏥%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">⚕️</div>
+                            <h3>Santé & Médical</h3>
+                            <p class="quiz-description">Médecine, pharmacie, recherche médicale, soins infirmiers, biotechnologies. Un secteur essentiel qui sauve des vies et améliore le bien-être de millions de personnes. Fais une différence concrète dans la vie des gens.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Impact social</span>
+                                <span class="quiz-time">🚀 Forte demande</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Finance & Banque -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Secteurs/finance.jpg" alt="Finance & Banque" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23228B22%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E💰%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">💰</div>
+                            <h3>Finance & Banque</h3>
+                            <p class="quiz-description">Banque d'investissement, gestion d'actifs, conseil financier, fintech. Un secteur stratégique qui façonne l'économie mondiale. Développe ton expertise en analyse financière et stratégie d'investissement.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Stratégique</span>
+                                <span class="quiz-time">💼 Bien rémunéré</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Éducation & Formation -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Secteurs/education.jpg" alt="Éducation & Formation" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23FF9800%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E📚%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">📚</div>
+                            <h3>Éducation & Formation</h3>
+                            <p class="quiz-description">Enseignement, formation professionnelle, e-learning, recherche académique. Transmets tes connaissances et forme les générations futures. Un métier de vocation qui façonne l'avenir de la société.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Transmission</span>
+                                <span class="quiz-time">🌱 Impact durable</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Environnement & Énergie -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Secteurs/environnement.jpg" alt="Environnement & Énergie" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%2300AA55%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🌱%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🌍</div>
+                            <h3>Environnement & Énergie</h3>
+                            <p class="quiz-description">Énergies renouvelables, développement durable, écologie, gestion des ressources. Un secteur d'avenir crucial pour préserver notre planète. Participe à la transition écologique et aux solutions climatiques.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Durable</span>
+                                <span class="quiz-time">🚀 En croissance</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arts & Culture -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Secteurs/arts.jpg" alt="Arts & Culture" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%239C27B0%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🎨%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🎨</div>
+                            <h3>Arts & Culture</h3>
+                            <p class="quiz-description">Cinéma, musique, design, architecture, patrimoine culturel. Exprime ta créativité et contribue au rayonnement culturel. Un secteur où passion et profession se rencontrent pour créer des œuvres inspirantes.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Créatif</span>
+                                <span class="quiz-time">🎭 Passion</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Industrie & Manufacturing -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Secteurs/industrie.jpg" alt="Industrie & Manufacturing" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23607D8B%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🏭%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">⚙️</div>
+                            <h3>Industrie & Manufacturing</h3>
+                            <p class="quiz-description">Aéronautique, automobile, robotique, production industrielle, logistique. Conçois et fabrique les produits qui améliorent notre quotidien. Un secteur qui allie innovation technologique et savoir-faire traditionnel.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Production</span>
+                                <span class="quiz-time">🔧 Technique</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Communication & Marketing -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Secteurs/communication.jpg" alt="Communication & Marketing" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23FF5722%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E📢%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">📢</div>
+                            <h3>Communication & Marketing</h3>
+                            <p class="quiz-description">Marketing digital, publicité, relations publiques, brand management, réseaux sociaux. Raconte des histoires qui captivent et connectent les marques aux consommateurs. Un secteur dynamique en constante évolution.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Créatif</span>
+                                <span class="quiz-time">📱 Digital</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Droit & Justice -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Secteurs/droit.jpg" alt="Droit & Justice" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23000080%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E⚖️%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">⚖️</div>
+                            <h3>Droit & Justice</h3>
+                            <p class="quiz-description">Avocat, magistrat, juriste d'entreprise, notaire, droit international. Défends les droits et la justice dans une société de droit. Un métier prestigieux qui demande rigueur, éloquence et sens de l'éthique.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Rigoureux</span>
+                                <span class="quiz-time">📜 Prestigieux</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hôtellerie & Tourisme -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Secteurs/tourisme.jpg" alt="Hôtellerie & Tourisme" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%2300BCD4%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E✈️%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🏨</div>
+                            <h3>Hôtellerie & Tourisme</h3>
+                            <p class="quiz-description">Hôtellerie de luxe, restauration, événementiel, tourisme international, croisières. Crée des expériences mémorables pour les voyageurs du monde entier. Un secteur convivial qui allie service et découverte.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Service</span>
+                                <span class="quiz-time">🌍 International</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Commerce & Retail -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Secteurs/commerce.jpg" alt="Commerce & Retail" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23E91E63%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🛍️%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🛒</div>
+                            <h3>Commerce & Retail</h3>
+                            <p class="quiz-description">E-commerce, grande distribution, retail management, merchandising, vente B2B. Connecte les produits aux consommateurs et façonne l'expérience d'achat de demain. Un secteur en pleine transformation digitale.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Dynamique</span>
+                                <span class="quiz-time">🛍️ Relationnel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transport & Logistique -->
+                    <div class="quiz-card">
+                        <div class="quiz-image">
+                            <img src="./Image_Secteurs/transport.jpg" alt="Transport & Logistique" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23795548%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🚚%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-icon-badge">🚛</div>
+                            <h3>Transport & Logistique</h3>
+                            <p class="quiz-description">Supply chain, logistique internationale, transport aérien et maritime, gestion de flux. Assure le mouvement des marchandises à travers le monde. Un secteur essentiel à l'économie mondiale.</p>
+                            <div class="quiz-footer">
+                                <span class="quiz-difficulty">Opérationnel</span>
+                                <span class="quiz-time">🌍 Global</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .quiz-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2d2d2d;
+            margin-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        .section-description {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+    </style>
+
+    <script>
+        // Settings dropdown toggle
+        document.getElementById('settingsBtn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('settingsDropdown').classList.toggle('active');
+        });
+
+        // Close dropdown when clicking elsewhere
+        document.addEventListener('click', function() {
+            document.getElementById('settingsDropdown').classList.remove('active');
+        });
+
+        // Navigation dropdown toggle
+        function toggleNavDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.currentTarget.closest('.nav-dropdown');
+            const menu = dropdown.querySelector('.nav-dropdown-menu');
+            const arrow = dropdown.querySelector('.nav-dropdown-arrow');
+            
+            menu.classList.toggle('active');
+            arrow.textContent = menu.classList.contains('active') ? '▲' : '▼';
+        }
+
+        // Close nav dropdown when clicking a link
+        document.querySelectorAll('.nav-dropdown-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const dropdown = this.closest('.nav-dropdown');
+                const menu = dropdown.querySelector('.nav-dropdown-menu');
+                const arrow = dropdown.querySelector('.nav-dropdown-arrow');
+                menu.classList.remove('active');
+                arrow.textContent = '▼';
+            });
+        });
+
+        // Search functionality
+        document.querySelector('.search-input').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.quiz-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('.quiz-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
