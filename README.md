@@ -15,6 +15,15 @@ NovAI-project/
 └── README.md
 ```
 
+## Prérequis
+
+L'application nécessite une clé API OpenAI pour fonctionner. Vous devez disposer d'une clé de type `sk-****`.
+
+Créez un fichier `.env` dans le dossier `backend/` avec le contenu suivant :
+```
+OPENAI_API_KEY=sk-votre-clé-ici
+```
+
 ## Installation et Démarrage
 
 ### Avec Docker Compose (Recommandé)
