@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAI - Découverte de Secteur</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="logo.png" alt="NOVAI Logo" class="logo-image">
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="/journey.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏠</div>
+                        <div class="nav-label">Accueil</div>
+                    </div>
+                </a>
+                <div class="nav-dropdown">
+                    <div class="nav-item-link nav-dropdown-trigger" onclick="toggleNavDropdown(event)">
+                        <div class="nav-item">
+                            <div class="nav-icon">👤</div>
+                            <div class="nav-label">MOI</div>
+                            <div class="nav-dropdown-arrow">▼</div>
+                        </div>
+                    </div>
+                    <div class="nav-dropdown-menu">
+                        <a href="/profil.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">📋</div>
+                            <div class="dropdown-label">Mon Profil</div>
+                        </a>
+                        <a href="/gouts.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">❤️</div>
+                            <div class="dropdown-label">Mes Goûts</div>
+                        </a>
+                        <a href="/capacites.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">🧠</div>
+                            <div class="dropdown-label">Mes Capacités</div>
+                        </a>
+                        <a href="/personality-journey.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">✨</div>
+                            <div class="dropdown-label">Test de Personnalité</div>
+                        </a>
+                    </div>
+                </div>
+                <a href="/quiz.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🎯</div>
+                        <div class="nav-label">Quiz & Tests</div>
+                    </div>
+                </a>
+                <a href="/secteurs.html" class="nav-item-link">
+                    <div class="nav-item active">
+                        <div class="nav-icon">🌐</div>
+                        <div class="nav-label">Découverte de secteurs</div>
+                    </div>
+                </a>
+                <a href="/events.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">📅</div>
+                        <div class="nav-label">Mes Événements</div>
+                    </div>
+                </a>
+                <a href="/entreprises.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏢</div>
+                        <div class="nav-label">Approfondir le monde du travail</div>
+                    </div>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <a href="/logout.html" class="header-icon-btn logout-btn" title="Déconnexion">
+                        Déconnexion
+                    </a>
+                </div>
+
+                <div class="header-center">
+                    <div class="progress-blocks">
+                        <a href="/personality-journey.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">1</span>
+                            <span class="block-label">Te connaitre</span>
+                        </a>
+                        <a href="/quiz.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">2</span>
+                            <span class="block-label">Te tester</span>
+                        </a>
+                        <a href="/secteurs.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">3</span>
+                            <span class="block-label">Découverte</span>
+                        </a>
+                        <a href="/events.html" class="progress-block" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">4</span>
+                            <span class="block-label">Evénements</span>
+                        </a>
+                        <a href="/entreprises.html" class="progress-block" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">5</span>
+                            <span class="block-label">Approf.</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="header-icon-btn" id="settingsBtn">
+                        ⚙️
+                        <div class="settings-dropdown" id="settingsDropdown">
+                            <div class="dropdown-item">Style du site</div>
+                            <div class="dropdown-item">Support</div>
+                            <div class="dropdown-item">Abonnement</div>
+                            <div class="dropdown-item">Nos partenaires</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Page Header -->
+                <div class="secteur-page-header">
+                    <button onclick="window.location.href='/secteurs.html'" class="back-button">
+                        ← Retour aux secteurs
+                    </button>
+                    <div class="secteur-title-container">
+                        <div class="secteur-icon" id="secteurIcon">✈️</div>
+                        <h1 id="secteurTitle">Aéronautique & Spatial</h1>
+                    </div>
+                    <p class="secteur-subtitle" id="secteurSubtitle">Découvre les formations et les parcours pour accéder à ce secteur passionnant</p>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="quiz-progress-container">
+                    <div class="quiz-progress-info">
+                        <span>Question <span id="currentQuestion">1</span> sur <span id="totalQuestions">5</span></span>
+                    </div>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="progressBar"></div>
+                    </div>
+                </div>
+
+                <!-- Information Section -->
+                <div class="secteur-info-section" id="infoSection">
+                    <div class="info-badge">📖 À lire attentivement</div>
+                    <h2 class="info-title" id="infoTitle">Formation initiale</h2>
+                    <div class="info-content" id="infoContent">
+                        <!-- Le contenu informatif sera inséré ici -->
+                    </div>
+                </div>
+
+                <!-- Question Section -->
+                <div class="quiz-question-container">
+                    <h2 class="quiz-question" id="questionText">Quelle est la meilleure réponse selon les informations ci-dessus ?</h2>
+                    <div class="quiz-answers" id="answersContainer">
+                        <!-- Les réponses seront insérées ici -->
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="quiz-navigation">
+                    <button id="prevBtn" class="quiz-nav-btn secondary" onclick="previousQuestion()" disabled>
+                        ← Question précédente
+                    </button>
+                    <button id="nextBtn" class="quiz-nav-btn primary" onclick="nextQuestion()" disabled>
+                        Question suivante →
+                    </button>
+                    <button id="submitBtn" class="quiz-nav-btn primary" onclick="submitQuiz()" style="display: none;" disabled>
+                        Terminer la découverte
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Données des quiz par secteur
+        const secteursData = {
+            'aeronautique-spatial': {
+                title: 'Aéronautique & Spatial',
+                icon: '✈️',
+                subtitle: 'Découvre les formations et les parcours pour accéder à ce secteur passionnant',
+                questions: [
+                    {
+                        infoTitle: "Les Formations Initiales en Aéronautique",
+                        infoContent: `
+                            <p>Le secteur de l'aéronautique et du spatial représente l'un des domaines industriels les plus prestigieux et exigeants. Il offre une multitude de voies d'accès, chacune adaptée à différents niveaux d'études, profils et aspirations professionnelles. Que vous soyez attiré par la conception d'avions de ligne, le développement de satellites, la maintenance aéronautique ou le pilotage, il existe un parcours de formation correspondant à vos objectifs.</p>
+                            
+                            <h3>🎓 Les Écoles d'Ingénieurs Prestigieuses</h3>
+                            <p>Les écoles d'ingénieurs spécialisées constituent la voie royale pour accéder aux postes d'ingénieur en aéronautique. Ces établissements d'excellence forment les futurs cadres et experts qui concevront les avions et systèmes spatiaux de demain. Le recrutement se fait généralement après une classe préparatoire scientifique (CPGE) via des concours sélectifs, mais certaines écoles proposent aussi des admissions parallèles.</p>
+                            
+                            <p><strong>ISAE-SUPAERO</strong> (Institut Supérieur de l'Aéronautique et de l'Espace - Toulouse) :</p>
+                            <ul>
+                                <li>École de référence mondiale, souvent classée n°1 en aéronautique</li>
+                                <li>Formation d'ingénieurs généralistes sur 3 ans après prépa</li>
+                                <li>Spécialisations : aérodynamique, propulsion, structures, systèmes embarqués, spatial</li>
+                                <li>Partenariats avec MIT, Caltech, Stanford pour doubles diplômes</li>
+                                <li>Taux d'insertion professionnelle : 100% avant la fin des études</li>
+                                <li>Salaire moyen de sortie : 45-50k€/an</li>
+                                <li>Alumnis célèbres : Thomas Pesquet (astronaute), dirigeants d'Airbus, Safran, ArianeGroup</li>
+                            </ul>
+                            
+                            <p><strong>École de l'Air et de l'Espace</strong> (Salon-de-Provence) :</p>
+                            <ul>
+                                <li>Formation militaire et civile d'excellence, sous tutelle du Ministère des Armées</li>
+                                <li>Accessible sur concours après prépa (filière MP, PC, PSI)</li>
+                                <li>Cursus unique combinant formation militaire, sportive et scientifique</li>
+                                <li>Débouchés : pilote de chasse, ingénieur aéronautique militaire, carrière dans la défense</li>
+                                <li>Avantages : études rémunérées, statut d'officier, carrière garantie</li>
+                                <li>Engagement de servir l'État pendant plusieurs années après la formation</li>
+                            </ul>
+                            
+                            <p><strong>ENAC</strong> (École Nationale de l'Aviation Civile - Toulouse) :</p>
+                            <ul>
+                                <li>École de référence mondiale pour le transport aérien et l'aviation civile</li>
+                                <li>Formations : ingénieurs ENAC, pilotes de ligne EPL, contrôleurs aériens ICNA</li>
+                                <li>Spécialités ingénieurs : navigation aérienne, sécurité, gestion du trafic, électronique embarquée</li>
+                                <li>Partenariats avec toutes les compagnies aériennes et autorités aéronautiques mondiales</li>
+                                <li>Formation de pilote de ligne : 20 mois intensifs, licence ATPL européenne</li>
+                                <li>Infrastructures exceptionnelles : simulateurs de vol, tour de contrôle pédagogique</li>
+                            </ul>
+                            
+                            <p><strong>ESTACA</strong> (École Supérieure des Techniques Aéronautiques et de Construction Automobile - Paris/Laval) :</p>
+                            <ul>
+                                <li>École spécialisée en transports : aéronautique, spatial, automobile, ferroviaire</li>
+                                <li>Accessible post-bac (5 ans) ou après prépa (3 ans)</li>
+                                <li>Pédagogie orientée projets avec de nombreux partenariats industriels</li>
+                                <li>Doubles diplômes possibles avec l'international (Canada, Brésil, Chine)</li>
+                                <li>80% des diplômés embauchés avant la fin des études</li>
+                            </ul>
+                            
+                            <p><strong>Autres écoles d'ingénieurs reconnues :</strong></p>
+                            <ul>
+                                <li><strong>IPSA</strong> (Institut Polytechnique des Sciences Avancées) : Formation post-bac sur 5 ans</li>
+                                <li><strong>Arts et Métiers (ENSAM)</strong> : Voie généraliste avec option aéronautique</li>
+                                <li><strong>Polytechnique</strong> : Formation généraliste avec possibilité de spécialisation aéro en master</li>
+                                <li><strong>Centrale/Mines</strong> : Écoles généralistes permettant l'accès au secteur via les spécialisations</li>
+                            </ul>
+                            
+                            <h3>🔧 Les Formations Techniques et Professionnelles (Bac+2/3)</h3>
+                            <p>L'industrie aéronautique a un besoin crucial de techniciens hautement qualifiés. Ces formations offrent une insertion professionnelle rapide avec des perspectives d'évolution intéressantes.</p>
+                            
+                            <p><strong>BTS Aéronautique</strong> :</p>
+                            <ul>
+                                <li>Formation en 2 ans accessible après un Bac général (spécialités scientifiques) ou STI2D</li>
+                                <li>Deux options : maintenance des aéronefs et systèmes, ou construction aéronautique</li>
+                                <li>50% de cours théoriques (mathématiques, mécanique, anglais technique)</li>
+                                <li>50% de pratique en atelier sur de vrais aéronefs</li>
+                                <li>Stage obligatoire de 6 à 8 semaines en entreprise</li>
+                                <li>Débouchés : technicien de maintenance, agent d'escale technique, contrôleur qualité</li>
+                                <li>Poursuite d'études possible en licence pro ou école d'ingénieurs en alternance</li>
+                                <li>Salaire débutant : 22-28k€/an, évolution rapide avec l'expérience</li>
+                            </ul>
+                            
+                            <p><strong>BUT Génie Mécanique et Productique</strong> (ex-DUT) :</p>
+                            <ul>
+                                <li>Formation en 3 ans en IUT, accessible après Bac général ou technologique</li>
+                                <li>Parcours "Innovation pour l'industrie" avec option aéronautique</li>
+                                <li>Enseignements : CAO/DAO (CATIA), mécanique, matériaux, production</li>
+                                <li>Projets industriels réels en partenariat avec Airbus, Safran, Latécoère</li>
+                                <li>Alternance possible dès la 2ème année</li>
+                                <li>Excellent tremplin vers les écoles d'ingénieurs (admissions parallèles)</li>
+                            </ul>
+                            
+                            <p><strong>Licences Professionnelles Aéronautiques</strong> :</p>
+                            <ul>
+                                <li>Formation d'1 an après Bac+2 (BTS, BUT) pour se spécialiser</li>
+                                <li>Spécialités : maintenance aéronautique, systèmes embarqués, composites, qualité aéronautique</li>
+                                <li>Formation majoritairement en alternance (rythme 2 semaines/2 semaines)</li>
+                                <li>Intervention de professionnels du secteur</li>
+                                <li>Projet tuteuré sur problématique réelle d'entreprise</li>
+                                <li>Taux d'insertion : 85-90% dans les 6 mois</li>
+                            </ul>
+                            
+                            <p><strong>Bac Professionnel Aéronautique</strong> :</p>
+                            <ul>
+                                <li>Formation en 3 ans après la 3ème</li>
+                                <li>Options : avionique, structure, systèmes</li>
+                                <li>22 semaines de stage en entreprise sur les 3 ans</li>
+                                <li>Accès direct à l'emploi ou poursuite en BTS aéronautique</li>
+                                <li>Métiers : opérateur d'assemblage, mécanicien aéronautique, câbleur</li>
+                            </ul>
+                            
+                            <h3>🎯 Les Prérequis et Qualités Indispensables</h3>
+                            <p><strong>Niveau Académique :</strong></p>
+                            <ul>
+                                <li><strong>Mathématiques</strong> : Niveau élevé indispensable (mécanique du vol, calculs de structures, aérodynamique)</li>
+                                <li><strong>Physique</strong> : Thermodynamique, mécanique des fluides, résistance des matériaux</li>
+                                <li><strong>Sciences de l'Ingénieur</strong> : Compréhension des systèmes complexes</li>
+                                <li>Pour les écoles d'ingénieurs : niveau prépa scientifique exigé (maths sup/spé)</li>
+                                <li>Pour les BTS/BUT : bon niveau en Bac général (spés maths/physique) ou STI2D</li>
+                            </ul>
+                            
+                            <p><strong>Compétences Linguistiques :</strong></p>
+                            <ul>
+                                <li><strong>Anglais technique OBLIGATOIRE</strong> : toute la documentation est en anglais</li>
+                                <li>Niveau B2 minimum requis pour les écoles d'ingénieurs</li>
+                                <li>TOEIC 750+ souvent exigé pour la diplomation</li>
+                                <li>Vocabulaire aéronautique spécifique à maîtriser</li>
+                                <li>Communication orale indispensable pour le travail en équipe internationale</li>
+                            </ul>
+                            
+                            <p><strong>Qualités Personnelles :</strong></p>
+                            <ul>
+                                <li><strong>Rigueur absolue</strong> : La sécurité aérienne ne tolère aucune approximation</li>
+                                <li><strong>Précision</strong> : Travail au micron près sur certaines pièces</li>
+                                <li><strong>Passion</strong> : L'aéronautique exige un engagement total</li>
+                                <li><strong>Travail en équipe</strong> : Projets mobilisant des centaines de personnes</li>
+                                <li><strong>Gestion du stress</strong> : Délais serrés, enjeux financiers et sécuritaires énormes</li>
+                            </ul>
+                        `,
+                        question: "Quelle école est considérée comme la référence mondiale pour la formation d'ingénieurs en aéronautique ?",
+                        answers: [
+                            { text: "ISAE-SUPAERO", correct: true },
+                            { text: "Polytechnique", correct: false },
+                            { text: "Centrale Paris", correct: false },
+                            { text: "ENSAM", correct: false }
+                        ]
+                    },
+                    {
+                        infoTitle: "Les Masters et Spécialisations",
+                        infoContent: `
+                            <p>Après un Bac+3 (licence scientifique) ou un diplôme d'ingénieur généraliste, il est tout à fait possible de se spécialiser dans l'aéronautique et le spatial via des masters universitaires ou des mastères spécialisés. Cette voie permet soit de compléter une formation généraliste, soit d'acquérir une expertise pointue dans un domaine spécifique de l'aéronautique. Ces formations sont particulièrement prisées par les entreprises du secteur car elles allient théorie avancée et compétences opérationnelles.</p>
+                            
+                            <h3>🚀 Masters Universitaires en Aéronautique</h3>
+                            <p>Les masters universitaires offrent une formation académique approfondie tout en maintenant des liens forts avec l'industrie. Ils sont accessibles après une licence scientifique (physique, mécanique, mathématiques appliquées) ou un diplôme d'ingénieur généraliste.</p>
+                            
+                            <p><strong>Master Aéronautique et Spatial</strong> (disponible à Toulouse, Paris-Saclay, Bordeaux, Lille) :</p>
+                            <ul>
+                                <li><strong>Durée</strong> : 2 ans (M1 + M2), accessible en M2 directement pour les ingénieurs</li>
+                                <li><strong>Parcours Propulsion</strong> : Moteurs d'avion (turbopropulseurs, turboréacteurs), propulsion spatiale (fusées), combustion</li>
+                                <li><strong>Parcours Structures</strong> : Dimensionnement, calculs de résistance, matériaux composites, fatigue des matériaux</li>
+                                <li><strong>Parcours Systèmes Embarqués</strong> : Avionique, calculateurs de bord, systèmes de navigation, autopilotes</li>
+                                <li><strong>Parcours Aérodynamique</strong> : Mécanique des fluides, écoulements compressibles, souffleries numériques</li>
+                                <li><strong>Parcours Spatial</strong> : Mécanique orbitale, satellites, lanceurs, missions interplanétaires</li>
+                                <li>Stage de fin d'études obligatoire de 5-6 mois en entreprise ou laboratoire de recherche</li>
+                                <li>Possibilité de poursuivre en doctorat pour la recherche académique ou industrielle</li>
+                                <li>Débouchés : Airbus, Safran, Dassault, Thales, ArianeGroup, laboratoires ONERA, CNES</li>
+                                <li>Salaire de sortie : 35-42k€/an, évolution rapide avec l'expérience</li>
+                            </ul>
+                            
+                            <p><strong>Master Mécanique des Fluides</strong> :</p>
+                            <ul>
+                                <li>Formation essentielle pour l'aérodynamique et la propulsion</li>
+                                <li>Enseignements : turbulence, couches limites, écoulements supersoniques, hypersoniques</li>
+                                <li>Utilisation intensive de la simulation numérique (CFD - Computational Fluid Dynamics)</li>
+                                <li>Logiciels enseignés : ANSYS Fluent, Star-CCM+, OpenFOAM</li>
+                                <li>Applications : conception d'ailes, optimisation de moteurs, réduction de traînée</li>
+                                <li>Projets en partenariat avec les souffleries de l'ONERA et les bureaux d'études d'Airbus</li>
+                            </ul>
+                            
+                            <p><strong>Master Matériaux Avancés</strong> :</p>
+                            <ul>
+                                <li>Spécialisation dans les matériaux composites, alliages métalliques, nanomatériaux</li>
+                                <li>Focus aéronautique : composites carbone (utilisés à 50% sur l'A350 et le B787)</li>
+                                <li>Procédés de fabrication : drapage, infusion, autoclave</li>
+                                <li>Caractérisation mécanique : essais de traction, fatigue, impact</li>
+                                <li>Enjeux : réduction de poids (1 kg économisé = 3000€/an de kérosène sur un avion)</li>
+                                <li>Débouchés : ingénieur matériaux chez Safran, Hexcel, Daher, laboratoires R&D</li>
+                            </ul>
+                            
+                            <p><strong>Master Automatique, Robotique</strong> :</p>
+                            <ul>
+                                <li>Pilotage automatique, contrôle-commande de vol, drones</li>
+                                <li>Systèmes de navigation inertielle, GPS différentiel</li>
+                                <li>Robotique pour la fabrication aéronautique (robots de perçage, de rivetage)</li>
+                                <li>Intelligence artificielle pour l'optimisation de trajectoires</li>
+                            </ul>
+                            
+                            <h3>🎓 Mastères Spécialisés (MS) - Formations Bac+6</h3>
+                            <p>Les Mastères Spécialisés sont des formations post-diplôme accréditées par la Conférence des Grandes Écoles. Ils permettent une hyper-spécialisation professionnalisante en 1 an après un Bac+5 (diplôme d'ingénieur ou master).</p>
+                            
+                            <p><strong>MS Aerospace Project Management</strong> (ISAE-SUPAERO) :</p>
+                            <ul>
+                                <li>Formation aux métiers de chef de projet aéronautique et spatial</li>
+                                <li>Enseignements : gestion de projet complexe, management d'équipes multiculturelles, analyse de risques</li>
+                                <li>Méthodologies : Agile adaptée à l'aéronautique, cycle en V, APQP</li>
+                                <li>Budget de projets : gérer des programmes de plusieurs centaines de millions d'euros</li>
+                                <li>Cas pratiques sur vrais projets : A320neo, Ariane 6, satellites OneWeb</li>
+                                <li>Intervenants : chefs de programme Airbus, Safran, ESA, Boeing</li>
+                                <li>Débouchés : chef de projet, responsable de programme, directeur de production</li>
+                                <li>Salaire : 50-65k€/an à la sortie</li>
+                            </ul>
+                            
+                            <p><strong>MS Maintenance Aéronautique</strong> (ENAC) :</p>
+                            <ul>
+                                <li>Gestion de la navigabilité, réglementation EASA Part-145, Part-M</li>
+                                <li>Planification de la maintenance préventive et corrective</li>
+                                <li>Optimisation des coûts de maintenance (35% des coûts d'exploitation d'une compagnie)</li>
+                                <li>Gestion de flotte, fiabilité, disponibilité opérationnelle</li>
+                                <li>Débouchés : directeur de maintenance chez Air France, EasyJet, Lufthansa Technik</li>
+                            </ul>
+                            
+                            <p><strong>MS Space Systems Engineering</strong> :</p>
+                            <ul>
+                                <li>Conception de satellites : télécommunications, observation de la Terre, navigation</li>
+                                <li>Lanceurs spatiaux : Ariane 6, Vega, futurs lanceurs réutilisables</li>
+                                <li>Missions interplanétaires : Mars, exploration lunaire (programme Artemis)</li>
+                                <li>Systèmes orbitaux : stations spatiales, constellations de satellites</li>
+                                <li>Environnement spatial : radiations, vide, contraintes thermiques extrêmes</li>
+                                <li>Partenariats : CNES, ESA, Thales Alenia Space, ArianeGroup</li>
+                            </ul>
+                            
+                            <p><strong>Autres MS spécialisés :</strong></p>
+                            <ul>
+                                <li><strong>MS Advanced Aeronautical Engineering</strong> : conception avancée d'aéronefs</li>
+                                <li><strong>MS Embedded Systems</strong> : systèmes critiques temps réel</li>
+                                <li><strong>MS Supply Chain Management Aéronautique</strong> : gestion de la chaîne logistique</li>
+                                <li><strong>MS Qualité et Performance Industrielle</strong> : certification, normes EN9100</li>
+                            </ul>
+                            
+                            <h3>🌍 Les Doubles Diplômes Internationaux</h3>
+                            <p>L'aéronautique est un secteur mondialisé. Les doubles diplômes internationaux sont extrêmement valorisés et ouvrent les portes des grandes entreprises internationales.</p>
+                            
+                            <p><strong>Partenariats avec les États-Unis :</strong></p>
+                            <ul>
+                                <li><strong>MIT</strong> (Massachusetts Institute of Technology) : Référence mondiale en aéronautique
+                                    <ul>
+                                        <li>Programme AeroAstro : aérodynamique, propulsion, structures</li>
+                                        <li>Accès aux laboratoires de la NASA</li>
+                                        <li>Durée : 1 à 2 ans sur campus à Boston</li>
+                                        <li>Niveau requis : excellent dossier académique + TOEFL 100+</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Caltech</strong> (California Institute of Technology) : Excellence en spatial
+                                    <ul>
+                                        <li>Partenariat historique avec le JPL (Jet Propulsion Laboratory)</li>
+                                        <li>Spécialisation en missions spatiales, robotique spatiale</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Georgia Tech</strong> : Leader en conception d'aéronefs</li>
+                                <li><strong>Purdue University</strong> : Berceau de nombreux astronautes</li>
+                                <li><strong>Stanford</strong> : IA appliquée à l'aéronautique</li>
+                            </ul>
+                            
+                            <p><strong>Partenariats européens :</strong></p>
+                            <ul>
+                                <li><strong>TU Munich</strong> (Allemagne) : Excellence en ingénierie
+                                    <ul>
+                                        <li>Partenariat avec MTU Aero Engines, Airbus Defence & Space</li>
+                                        <li>Spécialisations : motorisation, structures légères</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Politecnico di Milano</strong> (Italie) : Design et aérodynamique
+                                    <ul>
+                                        <li>Collaboration avec Leonardo (hélicoptères)</li>
+                                        <li>Formation en conception aérodynamique avancée</li>
+                                    </ul>
+                                </li>
+                                <li><strong>TU Delft</strong> (Pays-Bas) : Aerospace Engineering de renommée mondiale</li>
+                                <li><strong>Cranfield University</strong> (UK) : Spécialiste en aéronautique et défense</li>
+                            </ul>
+                            
+                            <p><strong>Avantages des doubles diplômes :</strong></p>
+                            <ul>
+                                <li><strong>Compétitivité</strong> : profil international très recherché (Airbus embauche dans 30 pays)</li>
+                                <li><strong>Réseau</strong> : alumni networks puissants (MIT, Caltech)</li>
+                                <li><strong>Mobilité</strong> : facilite l'expatriation et les carrières internationales</li>
+                                <li><strong>Compétences interculturelles</strong> : essentielles dans les projets aéronautiques multinationaux</li>
+                                <li><strong>Salaire</strong> : +15-25% en moyenne par rapport à un cursus classique</li>
+                                <li><strong>Évolution</strong> : accès accéléré aux postes de management international</li>
+                            </ul>
+                            
+                            <p><strong>Coût et financement :</strong></p>
+                            <ul>
+                                <li>Coût total : 30-80k€ selon l'université (USA plus cher que Europe)</li>
+                                <li>Bourses disponibles : Erasmus+, bourses d'excellence, fondations des écoles</li>
+                                <li>Prêts étudiants : garantie de l'État, taux préférentiels</li>
+                                <li>Alternance internationale : certaines entreprises financent le cursus</li>
+                                <li>Retour sur investissement : récupéré en 2-3 ans grâce au différentiel de salaire</li>
+                            </ul>
+                        `,
+                        question: "Quel niveau d'études représente un Mastère Spécialisé (MS) ?",
+                        answers: [
+                            { text: "Bac+6", correct: true },
+                            { text: "Bac+5", correct: false },
+                            { text: "Bac+4", correct: false },
+                            { text: "Bac+3", correct: false }
+                        ]
+                    },
+                    {
+                        infoTitle: "Les Voies Alternatives et Reconversions",
+                        infoContent: `
+                            <p>Il n'est pas nécessaire de suivre un parcours linéaire pour accéder au secteur aéronautique. Plusieurs voies alternatives existent.</p>
+                            
+                            <h3>🔄 Formation Continue et VAE</h3>
+                            <p>La <strong>Validation des Acquis de l'Expérience (VAE)</strong> permet d'obtenir un diplôme aéronautique grâce à l'expérience professionnelle. Des organismes comme le CNAM proposent des formations en cours du soir.</p>
+                            
+                            <h3>💼 Les Écoles Post-Bac Privées</h3>
+                            <ul>
+                                <li><strong>IPSA</strong> (Institut Polytechnique des Sciences Avancées) : Formation d'ingénieurs accessible post-bac</li>
+                                <li><strong>EPF</strong> : École généraliste avec option aéronautique</li>
+                                <li><strong>EIGSI</strong> : Spécialisation possible en aéronautique</li>
+                            </ul>
+                            
+                            <h3>🎖️ La Voie Militaire</h3>
+                            <p>L'armée de l'air et de l'espace offre des formations complètes :</p>
+                            <ul>
+                                <li><strong>École de l'Air</strong> : Concours post-prépa ou post-licence</li>
+                                <li><strong>Écoles de sous-officiers</strong> : Formations techniques spécialisées</li>
+                                <li><strong>Engagements volontaires</strong> : Avec formation interne</li>
+                            </ul>
+                            
+                            <h3>🌟 Les Formations Courtes Certifiantes</h3>
+                            <p>Pour des postes spécifiques (techniciens, contrôleurs qualité), des certifications professionnelles existent :</p>
+                            <ul>
+                                <li>Certificat de Qualification Professionnelle (CQP) en aéronautique</li>
+                                <li>Titres professionnels AFPA</li>
+                                <li>Formations constructeurs (Airbus, Dassault, Safran)</li>
+                            </ul>
+                        `,
+                        question: "Que signifie l'acronyme VAE ?",
+                        answers: [
+                            { text: "Validation des Acquis de l'Expérience", correct: true },
+                            { text: "Validation Académique Étendue", correct: false },
+                            { text: "Voie d'Accès à l'Emploi", correct: false },
+                            { text: "Validation Aéronautique Européenne", correct: false }
+                        ]
+                    },
+                    {
+                        infoTitle: "Les Compétences Clés et Prérequis",
+                        infoContent: `
+                            <p>Pour réussir dans le secteur aéronautique, certaines compétences et qualités sont essentielles, quel que soit le métier visé.</p>
+                            
+                            <h3>📊 Compétences Techniques</h3>
+                            <ul>
+                                <li><strong>Mathématiques et Physique</strong> : Base fondamentale pour comprendre les principes de vol, mécanique des fluides, résistance des matériaux</li>
+                                <li><strong>Informatique et Programmation</strong> : MATLAB, Python, C/C++, systèmes embarqués</li>
+                                <li><strong>CAO/DAO</strong> : CATIA V5/V6 (standard Airbus), SolidWorks, AutoCAD</li>
+                                <li><strong>Simulation numérique</strong> : ANSYS, Abaqus pour les calculs de structures</li>
+                            </ul>
+                            
+                            <h3>🌐 Compétences Linguistiques</h3>
+                            <p><strong>L'anglais est OBLIGATOIRE</strong> dans l'aéronautique :</p>
+                            <ul>
+                                <li>Toute la documentation technique est en anglais</li>
+                                <li>Les équipes sont souvent internationales</li>
+                                <li>Niveau B2 minimum requis, C1 recommandé</li>
+                                <li>Une deuxième langue (allemand, espagnol) est un plus</li>
+                            </ul>
+                            
+                            <h3>🧠 Soft Skills Essentiels</h3>
+                            <ul>
+                                <li><strong>Rigueur et Précision</strong> : Aucune erreur n'est tolérée en aéronautique (sécurité critique)</li>
+                                <li><strong>Travail en équipe</strong> : Les projets mobilisent des centaines de personnes</li>
+                                <li><strong>Gestion du stress</strong> : Respecter des délais stricts et des budgets serrés</li>
+                                <li><strong>Capacité d'adaptation</strong> : Technologies en constante évolution</li>
+                                <li><strong>Curiosité technique</strong> : Veille technologique permanente</li>
+                            </ul>
+                            
+                            <h3>🔐 Aspects Réglementaires</h3>
+                            <p>Certains postes nécessitent :</p>
+                            <ul>
+                                <li>Habilitation secret défense (pour les projets militaires)</li>
+                                <li>Casier judiciaire vierge</li>
+                                <li>Nationalité française ou européenne (selon les projets)</li>
+                            </ul>
+                        `,
+                        question: "Quel est le niveau d'anglais minimum généralement requis dans l'aéronautique ?",
+                        answers: [
+                            { text: "B2 (niveau avancé)", correct: true },
+                            { text: "A2 (niveau élémentaire)", correct: false },
+                            { text: "B1 (niveau intermédiaire)", correct: false },
+                            { text: "C2 (niveau bilingue)", correct: false }
+                        ]
+                    },
+                    {
+                        infoTitle: "Les Opportunités de Carrière et Évolution",
+                        infoContent: `
+                            <p>Le secteur aéronautique offre des perspectives de carrière riches et variées, avec de nombreuses possibilités d'évolution.</p>
+                            
+                            <h3>🎯 Les Débouchés par Niveau</h3>
+                            <p><strong>Niveau Bac+2/3 :</strong></p>
+                            <ul>
+                                <li>Technicien de maintenance aéronautique (25-35k€/an)</li>
+                                <li>Technicien en bureau d'études (28-38k€/an)</li>
+                                <li>Contrôleur qualité aéronautique (26-36k€/an)</li>
+                            </ul>
+                            
+                            <p><strong>Niveau Bac+5 (Ingénieur) :</strong></p>
+                            <ul>
+                                <li>Ingénieur conception/calcul (35-45k€/an débutant)</li>
+                                <li>Ingénieur systèmes embarqués (38-48k€/an)</li>
+                                <li>Ingénieur essais en vol (40-50k€/an)</li>
+                                <li>Chef de projet aéronautique (45-60k€/an avec expérience)</li>
+                            </ul>
+                            
+                            <h3>📈 Évolution de Carrière</h3>
+                            <p>Parcours type d'un ingénieur aéronautique :</p>
+                            <ol>
+                                <li><strong>Années 1-3</strong> : Ingénieur junior, apprentissage des outils et méthodes</li>
+                                <li><strong>Années 4-7</strong> : Ingénieur confirmé, responsabilité de sous-systèmes</li>
+                                <li><strong>Années 8-12</strong> : Ingénieur senior ou chef de projet</li>
+                                <li><strong>Années 12+</strong> : Expert technique, manager, ou directeur de programme</li>
+                            </ol>
+                            
+                            <h3>🌍 Mobilité Internationale</h3>
+                            <p>Le secteur offre de nombreuses opportunités à l'international :</p>
+                            <ul>
+                                <li>Détachements dans les filiales (États-Unis, Chine, Inde)</li>
+                                <li>Projets internationaux (A350, F-35, Ariane 6)</li>
+                                <li>Expatriation chez des clients (compagnies aériennes)</li>
+                            </ul>
+                            
+                            <h3>💼 Les Grands Employeurs</h3>
+                            <ul>
+                                <li><strong>Airbus</strong> : Leader européen (130 000 employés)</li>
+                                <li><strong>Safran</strong> : Motoriste et équipementier (80 000 employés)</li>
+                                <li><strong>Dassault Aviation</strong> : Aviation d'affaires et militaire</li>
+                                <li><strong>Thales</strong> : Systèmes embarqués et défense</li>
+                                <li><strong>ArianeGroup</strong> : Lanceurs spatiaux</li>
+                            </ul>
+                        `,
+                        question: "Quel est approximativement le salaire de départ d'un ingénieur aéronautique débutant ?",
+                        answers: [
+                            { text: "Entre 35 000 et 45 000 € par an", correct: true },
+                            { text: "Entre 20 000 et 25 000 € par an", correct: false },
+                            { text: "Entre 50 000 et 60 000 € par an", correct: false },
+                            { text: "Entre 25 000 et 30 000 € par an", correct: false }
+                        ]
+                    }
+                ]
+            },
+            // Vous pouvez ajouter d'autres secteurs ici
+            'defense-securite': {
+                title: 'Défense & Sécurité',
+                icon: '🛡️',
+                subtitle: 'Explore les parcours vers les métiers de la défense et de la sécurité nationale',
+                questions: [
+                    {
+                        infoTitle: "Les Formations en Défense et Sécurité",
+                        infoContent: `
+                            <p>Le secteur de la défense et de la sécurité propose des parcours variés, alliant formations militaires et civiles.</p>
+                            
+                            <h3>🎖️ Les Écoles Militaires</h3>
+                            <ul>
+                                <li><strong>École Polytechnique</strong> : Formation d'officiers ingénieurs d'élite</li>
+                                <li><strong>Saint-Cyr Coëtquidan</strong> : École de formation des officiers de l'armée de terre</li>
+                                <li><strong>École Navale</strong> : Formation des officiers de marine</li>
+                                <li><strong>École de l'Air et de l'Espace</strong> : Formation des officiers de l'armée de l'air</li>
+                            </ul>
+                            
+                            <h3>🔐 Les Formations en Cybersécurité</h3>
+                            <ul>
+                                <li><strong>ANSSI</strong> : Formations certifiantes en cyberdéfense</li>
+                                <li><strong>EPITA</strong> : École d'ingénieurs spécialisée en informatique et cybersécurité</li>
+                                <li><strong>CentraleSupélec</strong> : Spécialisation en sécurité des systèmes d'information</li>
+                            </ul>
+                            
+                            <h3>🎯 Les Prérequis</h3>
+                            <p>Excellente condition physique pour les formations militaires, rigueur intellectuelle et engagement patriotique sont essentiels.</p>
+                        `,
+                        question: "Quelle école forme les officiers de l'armée de terre ?",
+                        answers: [
+                            { text: "Saint-Cyr Coëtquidan", correct: true },
+                            { text: "École Navale", correct: false },
+                            { text: "École de l'Air", correct: false },
+                            { text: "École Polytechnique", correct: false }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // Variables globales
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let currentSecteur = '';
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer le type de secteur depuis l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            currentSecteur = urlParams.get('type') || 'aeronautique-spatial';
+            
+            // Charger les données du secteur
+            loadSecteurData();
+            
+            // Afficher la première question
+            displayQuestion(0);
+            
+            // Settings dropdown
+            document.getElementById('settingsBtn').addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.getElementById('settingsDropdown').classList.toggle('active');
+            });
+
+            document.addEventListener('click', function() {
+                document.getElementById('settingsDropdown').classList.remove('active');
+            });
+        });
+
+        function loadSecteurData() {
+            const secteurData = secteursData[currentSecteur];
+            if (secteurData) {
+                document.getElementById('secteurTitle').textContent = secteurData.title;
+                document.getElementById('secteurIcon').textContent = secteurData.icon;
+                document.getElementById('secteurSubtitle').textContent = secteurData.subtitle;
+                document.getElementById('totalQuestions').textContent = secteurData.questions.length;
+            }
+        }
+
+        function displayQuestion(index) {
+            const secteurData = secteursData[currentSecteur];
+            const question = secteurData.questions[index];
+            
+            // Mettre à jour la progression
+            currentQuestionIndex = index;
+            document.getElementById('currentQuestion').textContent = index + 1;
+            const progress = ((index + 1) / secteurData.questions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Afficher le contenu informatif
+            document.getElementById('infoTitle').textContent = question.infoTitle;
+            document.getElementById('infoContent').innerHTML = question.infoContent;
+            
+            // Afficher la question
+            document.getElementById('questionText').textContent = question.question;
+            
+            // Afficher les réponses
+            const answersContainer = document.getElementById('answersContainer');
+            answersContainer.innerHTML = '';
+            
+            question.answers.forEach((answer, answerIndex) => {
+                const answerBtn = document.createElement('button');
+                answerBtn.className = 'quiz-answer-btn';
+                answerBtn.textContent = answer.text;
+                answerBtn.onclick = () => selectAnswer(answerIndex);
+                
+                // Si une réponse était déjà sélectionnée pour cette question
+                if (userAnswers[index] !== undefined && userAnswers[index] === answerIndex) {
+                    answerBtn.classList.add('selected');
+                }
+                
+                answersContainer.appendChild(answerBtn);
+            });
+            
+            // Mettre à jour les boutons de navigation
+            updateNavigationButtons();
+        }
+
+        function selectAnswer(answerIndex) {
+            // Sauvegarder la réponse
+            userAnswers[currentQuestionIndex] = answerIndex;
+            
+            // Mettre à jour l'affichage
+            const answerButtons = document.querySelectorAll('.quiz-answer-btn');
+            answerButtons.forEach((btn, idx) => {
+                btn.classList.remove('selected');
+                if (idx === answerIndex) {
+                    btn.classList.add('selected');
+                }
+            });
+            
+            // Activer le bouton suivant
+            updateNavigationButtons();
+        }
+
+        function updateNavigationButtons() {
+            const secteurData = secteursData[currentSecteur];
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Bouton précédent
+            prevBtn.disabled = currentQuestionIndex === 0;
+            
+            // Dernière question ?
+            const isLastQuestion = currentQuestionIndex === secteurData.questions.length - 1;
+            
+            if (isLastQuestion) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'inline-flex';
+                submitBtn.disabled = userAnswers[currentQuestionIndex] === undefined;
+            } else {
+                nextBtn.style.display = 'inline-flex';
+                submitBtn.style.display = 'none';
+                nextBtn.disabled = userAnswers[currentQuestionIndex] === undefined;
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                displayQuestion(currentQuestionIndex - 1);
+            }
+        }
+
+        function nextQuestion() {
+            const secteurData = secteursData[currentSecteur];
+            if (currentQuestionIndex < secteurData.questions.length - 1) {
+                displayQuestion(currentQuestionIndex + 1);
+            }
+        }
+
+        function submitQuiz() {
+            // Calculer le score
+            const secteurData = secteursData[currentSecteur];
+            let score = 0;
+            
+            secteurData.questions.forEach((question, index) => {
+                const userAnswerIndex = userAnswers[index];
+                if (userAnswerIndex !== undefined && question.answers[userAnswerIndex].correct) {
+                    score++;
+                }
+            });
+            
+            // Sauvegarder les résultats
+            sessionStorage.setItem('secteurScore', score);
+            sessionStorage.setItem('secteurTotal', secteurData.questions.length);
+            sessionStorage.setItem('secteurType', currentSecteur);
+            sessionStorage.setItem('secteurTitle', secteurData.title);
+            
+            // Rediriger vers la page de résultats
+            window.location.href = `/secteur-result.html?score=${score}&total=${secteurData.questions.length}&type=${currentSecteur}`;
+        }
+
+        function toggleNavDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.currentTarget.closest('.nav-dropdown');
+            const menu = dropdown.querySelector('.nav-dropdown-menu');
+            const arrow = dropdown.querySelector('.nav-dropdown-arrow');
+            
+            menu.classList.toggle('active');
+            arrow.textContent = menu.classList.contains('active') ? '▲' : '▼';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAI - Résultats Découverte Secteur</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="logo.png" alt="NOVAI Logo" class="logo-image">
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="/journey.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏠</div>
+                        <div class="nav-label">Accueil</div>
+                    </div>
+                </a>
+                <div class="nav-dropdown">
+                    <div class="nav-item-link nav-dropdown-trigger" onclick="toggleNavDropdown(event)">
+                        <div class="nav-item">
+                            <div class="nav-icon">👤</div>
+                            <div class="nav-label">MOI</div>
+                            <div class="nav-dropdown-arrow">▼</div>
+                        </div>
+                    </div>
+                    <div class="nav-dropdown-menu">
+                        <a href="/profil.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">📋</div>
+                            <div class="dropdown-label">Mon Profil</div>
+                        </a>
+                        <a href="/gouts.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">❤️</div>
+                            <div class="dropdown-label">Mes Goûts</div>
+                        </a>
+                        <a href="/capacites.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">🧠</div>
+                            <div class="dropdown-label">Mes Capacités</div>
+                        </a>
+                        <a href="/personality-journey.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">✨</div>
+                            <div class="dropdown-label">Test de Personnalité</div>
+                        </a>
+                    </div>
+                </div>
+                <a href="/quiz.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🎯</div>
+                        <div class="nav-label">Quiz & Tests</div>
+                    </div>
+                </a>
+                <a href="/secteurs.html" class="nav-item-link">
+                    <div class="nav-item active">
+                        <div class="nav-icon">🌐</div>
+                        <div class="nav-label">Découverte de secteurs</div>
+                    </div>
+                </a>
+                <a href="/events.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">📅</div>
+                        <div class="nav-label">Mes Événements</div>
+                    </div>
+                </a>
+                <a href="/entreprises.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏢</div>
+                        <div class="nav-label">Approfondir le monde du travail</div>
+                    </div>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <a href="/logout.html" class="header-icon-btn logout-btn" title="Déconnexion">
+                        Déconnexion
+                    </a>
+                </div>
+
+                <div class="header-center">
+                    <div class="progress-blocks">
+                        <a href="/personality-journey.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">1</span>
+                            <span class="block-label">Te connaitre</span>
+                        </a>
+                        <a href="/quiz.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">2</span>
+                            <span class="block-label">Te tester</span>
+                        </a>
+                        <a href="/secteurs.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">3</span>
+                            <span class="block-label">Découverte</span>
+                        </a>
+                        <a href="/events.html" class="progress-block" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">4</span>
+                            <span class="block-label">Evénements</span>
+                        </a>
+                        <a href="/entreprises.html" class="progress-block" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">5</span>
+                            <span class="block-label">Approf.</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="header-icon-btn" id="settingsBtn">
+                        ⚙️
+                        <div class="settings-dropdown" id="settingsDropdown">
+                            <div class="dropdown-item">Style du site</div>
+                            <div class="dropdown-item">Support</div>
+                            <div class="dropdown-item">Abonnement</div>
+                            <div class="dropdown-item">Nos partenaires</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="quiz-results-page">
+                    <!-- Result Header -->
+                    <div class="result-header">
+                        <div class="result-icon">🎓</div>
+                        <h1 class="result-title">Découverte Terminée !</h1>
+                        <p class="result-subtitle" id="secteurTitle">Aéronautique & Spatial</p>
+                    </div>
+
+                    <!-- Score Circle -->
+                    <div class="score-container">
+                        <div class="score-circle" id="scoreCircle">
+                            <div class="score-text">
+                                <span class="score-number" id="scoreNumber">0</span>
+                                <span class="score-divider">/</span>
+                                <span class="score-total" id="scoreTotal">5</span>
+                            </div>
+                            <div class="score-label">Questions réussies</div>
+                        </div>
+                    </div>
+
+                    <!-- Résultat Message -->
+                    <div class="result-message" id="resultMessage">
+                        <h2>Excellent travail !</h2>
+                        <p>Tu as une très bonne compréhension des parcours de formation dans ce secteur.</p>
+                    </div>
+
+                    <!-- Statistics -->
+                    <div class="result-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-value" id="percentageScore">80%</div>
+                            <div class="stat-label">Taux de réussite</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-value" id="correctAnswers">4</div>
+                            <div class="stat-label">Bonnes réponses</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📚</div>
+                            <div class="stat-value" id="totalQuestions">5</div>
+                            <div class="stat-label">Questions totales</div>
+                        </div>
+                    </div>
+
+                    <!-- Informations supplémentaires -->
+                    <div class="result-info-box">
+                        <div class="info-box-header">
+                            <div class="info-box-icon">💡</div>
+                            <h3>Que faire maintenant ?</h3>
+                        </div>
+                        <div class="info-box-content">
+                            <p>Tu as découvert les différentes voies d'accès à ce secteur. N'hésite pas à :</p>
+                            <ul>
+                                <li>Consulter les sites web des écoles mentionnées</li>
+                                <li>Participer aux journées portes ouvertes</li>
+                                <li>Contacter des professionnels du secteur</li>
+                                <li>Explorer d'autres secteurs pour comparer</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="result-actions">
+                        <button class="result-btn primary" id="restartBtn">
+                            🔄 Refaire cette découverte
+                        </button>
+                        <button class="result-btn secondary" onclick="window.location.href='/secteurs.html'">
+                            🌐 Découvrir d'autres secteurs
+                        </button>
+                        <button class="result-btn secondary" onclick="window.location.href='/entreprises.html'">
+                            🏢 Découvrir les entreprises
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            displayResults();
+            setupRestartButton();
+            
+            // Settings dropdown
+            document.getElementById('settingsBtn').addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.getElementById('settingsDropdown').classList.toggle('active');
+            });
+
+            document.addEventListener('click', function() {
+                document.getElementById('settingsDropdown').classList.remove('active');
+            });
+        });
+
+        function getQuizResults() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            return {
+                score: parseInt(urlParams.get('score')) || parseInt(sessionStorage.getItem('secteurScore')) || 0,
+                total: parseInt(urlParams.get('total')) || parseInt(sessionStorage.getItem('secteurTotal')) || 5,
+                secteurType: urlParams.get('type') || sessionStorage.getItem('secteurType') || 'aeronautique-spatial',
+                secteurTitle: sessionStorage.getItem('secteurTitle') || 'Aéronautique & Spatial'
+            };
+        }
+
+        function displayResults() {
+            const results = getQuizResults();
+            const percentage = Math.round((results.score / results.total) * 100);
+            
+            // Mettre à jour le titre du secteur
+            document.getElementById('secteurTitle').textContent = results.secteurTitle;
+            
+            // Mettre à jour le score
+            document.getElementById('scoreNumber').textContent = results.score;
+            document.getElementById('scoreTotal').textContent = results.total;
+            document.getElementById('percentageScore').textContent = percentage + '%';
+            document.getElementById('correctAnswers').textContent = results.score;
+            document.getElementById('totalQuestions').textContent = results.total;
+            
+            // Animer le cercle de score
+            const scoreCircle = document.getElementById('scoreCircle');
+            scoreCircle.style.background = `conic-gradient(
+                #4E5EF1 0% ${percentage}%,
+                #e8eaff ${percentage}% 100%
+            )`;
+            
+            // Mettre à jour le message en fonction du score
+            const messageElement = document.getElementById('resultMessage');
+            let title, message;
+            
+            if (percentage >= 80) {
+                title = "Excellent travail ! 🌟";
+                message = "Tu as une très bonne compréhension des parcours de formation dans ce secteur. Tu es prêt(e) à explorer les opportunités concrètes !";
+            } else if (percentage >= 60) {
+                title = "Bon travail ! 👍";
+                message = "Tu as acquis de bonnes connaissances sur les formations disponibles. N'hésite pas à approfondir certains aspects.";
+            } else if (percentage >= 40) {
+                title = "C'est un bon début ! 💪";
+                message = "Tu as découvert les grandes lignes du secteur. Prends le temps de relire les informations pour mieux comprendre les parcours.";
+            } else {
+                title = "Continue d'explorer ! 🚀";
+                message = "Ce secteur commence à te devenir familier. Refais la découverte pour mieux mémoriser les informations importantes.";
+            }
+            
+            messageElement.innerHTML = `<h2>${title}</h2><p>${message}</p>`;
+        }
+
+        function setupRestartButton() {
+            const results = getQuizResults();
+            const restartBtn = document.getElementById('restartBtn');
+            restartBtn.onclick = function() {
+                window.location.href = `/secteur-detail.html?type=${results.secteurType}`;
+            };
+        }
+
+        function toggleNavDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.currentTarget.closest('.nav-dropdown');
+            const menu = dropdown.querySelector('.nav-dropdown-menu');
+            const arrow = dropdown.querySelector('.nav-dropdown-arrow');
+            
+            menu.classList.toggle('active');
+            arrow.textContent = menu.classList.contains('active') ? '▲' : '▼';
+        }
+    </script>
+</body>
+</html>

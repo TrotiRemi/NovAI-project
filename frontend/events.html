@@ -56,12 +56,6 @@
                         <div class="nav-label">Quiz & Tests</div>
                     </div>
                 </a>
-                <a href="/entreprises.html" class="nav-item-link">
-                    <div class="nav-item">
-                        <div class="nav-icon">🏢</div>
-                        <div class="nav-label">Approfondir le monde du travail</div>
-                    </div>
-                </a>
                 <a href="/secteurs.html" class="nav-item-link">
                     <div class="nav-item">
                         <div class="nav-icon">🌐</div>
@@ -72,6 +66,12 @@
                     <div class="nav-item active">
                         <div class="nav-icon">📅</div>
                         <div class="nav-label">Mes Événements</div>
+                    </div>
+                </a>
+                <a href="/entreprises.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏢</div>
+                        <div class="nav-label">Approfondir le monde du travail</div>
                     </div>
                 </a>
             </nav>
@@ -285,7 +285,12 @@
                             <span>${event.date}</span>
                         </div>
                         <p class="event-description">${event.description}</p>
-                        <a href="${event.url}" target="_blank" class="event-link">En savoir plus →</a>
+                        <div class="event-actions">
+                            <button class="btn-add-planning" onclick="event.stopPropagation()">
+                                 Ajouter au planning
+                            </button>
+                            <a href="${event.url}" target="_blank" class="event-link">En savoir plus →</a>
+                        </div>
                     </div>
                 </div>
             `;
@@ -357,6 +362,40 @@
 
         .quiz-search {
             margin-bottom: 30px;
+        }
+
+        .event-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .btn-add-planning {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #24A148 0%, #1D8139 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(36, 161, 72, 0.2);
+        }
+
+        .btn-add-planning:hover {
+            background: linear-gradient(135deg, #1D8139 0%, #186F2F 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(36, 161, 72, 0.3);
+        }
+
+        .btn-add-planning:active {
+            transform: scale(0.98);
         }
     </style>
 </body>

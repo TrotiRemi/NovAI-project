@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAI - Résultats du Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="logo.png" alt="NOVAI Logo" class="logo-image">
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="/journey.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏠</div>
+                        <div class="nav-label">Accueil</div>
+                    </div>
+                </a>
+                <div class="nav-dropdown">
+                    <div class="nav-item-link nav-dropdown-trigger" onclick="toggleNavDropdown(event)">
+                        <div class="nav-item">
+                            <div class="nav-icon">👤</div>
+                            <div class="nav-label">MOI</div>
+                            <div class="nav-dropdown-arrow">▼</div>
+                        </div>
+                    </div>
+                    <div class="nav-dropdown-menu">
+                        <a href="/profil.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">📋</div>
+                            <div class="dropdown-label">Mon Profil</div>
+                        </a>
+                        <a href="/gouts.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">❤️</div>
+                            <div class="dropdown-label">Mes Goûts</div>
+                        </a>
+                        <a href="/capacites.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">🧠</div>
+                            <div class="dropdown-label">Mes Capacités</div>
+                        </a>
+                        <a href="/personality-journey.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">✨</div>
+                            <div class="dropdown-label">Test de Personnalité</div>
+                        </a>
+                    </div>
+                </div>
+                <a href="/quiz.html" class="nav-item-link">
+                    <div class="nav-item active">
+                        <div class="nav-icon">🎯</div>
+                        <div class="nav-label">Quiz & Tests</div>
+                    </div>
+                </a>
+                <a href="/secteurs.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🌐</div>
+                        <div class="nav-label">Découverte de secteurs</div>
+                    </div>
+                </a>
+                <a href="/events.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">📅</div>
+                        <div class="nav-label">Mes Événements</div>
+                    </div>
+                </a>
+                <a href="/entreprises.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏢</div>
+                        <div class="nav-label">Approfondir le monde du travail</div>
+                    </div>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <a href="/logout.html" class="header-icon-btn logout-btn" title="Déconnexion">
+                        Déconnexion
+                    </a>
+                </div>
+
+                <div class="header-center">
+                    <div class="progress-blocks">
+                        <a href="/personality-journey.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">1</span>
+                            <span class="block-label">Te connaitre</span>
+                        </a>
+                        <a href="/quiz.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">2</span>
+                            <span class="block-label">Te tester</span>
+                        </a>
+                        <a href="/secteurs.html" class="progress-block" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">3</span>
+                            <span class="block-label">Découverte</span>
+                        </a>
+                        <a href="/events.html" class="progress-block" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">4</span>
+                            <span class="block-label">Evénements</span>
+                        </a>
+                        <a href="/entreprises.html" class="progress-block" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">5</span>
+                            <span class="block-label">Approf.</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="header-icon-btn" id="settingsBtn">
+                        ⚙️
+                        <div class="settings-dropdown" id="settingsDropdown">
+                            <div class="dropdown-item">Style du site</div>
+                            <div class="dropdown-item">Support</div>
+                            <div class="dropdown-item">Abonnement</div>
+                            <div class="dropdown-item">Nos partenaires</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Results Container -->
+                <div class="quiz-results-page">
+                    <div class="results-header">
+                        <div class="results-icon-large">🎉</div>
+                        <h1>Quiz terminé !</h1>
+                        <p class="results-subtitle">Bravo, tu as complété le quiz</p>
+                    </div>
+
+                    <div class="results-main-card">
+                        <div class="score-display">
+                            <div class="score-circle-large">
+                                <div class="score-content">
+                                    <span class="score-number-large" id="scoreNumber">0</span>
+                                    <span class="score-separator">/</span>
+                                    <span class="score-total-large" id="scoreTotal">10</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="score-details">
+                            <h2 class="score-title">Score global</h2>
+                            <div class="percentage-badge" id="percentageBadge">0%</div>
+                            <p class="score-message" id="scoreMessage">Excellent travail !</p>
+                        </div>
+
+                        <div class="results-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon">✅</div>
+                                <div class="stat-label">Bonnes réponses</div>
+                                <div class="stat-value" id="correctAnswers">0</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">❌</div>
+                                <div class="stat-label">Mauvaises réponses</div>
+                                <div class="stat-value" id="wrongAnswers">0</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">⏱️</div>
+                                <div class="stat-label">Temps écoulé</div>
+                                <div class="stat-value" id="timeSpent">10 min</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-actions">
+                        <button class="btn-primary-large" onclick="window.location.href='/quiz.html'">
+                            🎯 Faire un nouveau quiz
+                        </button>
+                        <button class="btn-secondary-large" id="restartQuizBtn">
+                            🔄 Recommencer ce quiz
+                        </button>
+                        <button class="btn-tertiary" onclick="window.location.href='/journey.html'">
+                            🏠 Retour à l'accueil
+                        </button>
+                    </div>
+
+                    <div class="results-encouragement">
+                        <div class="encouragement-card">
+                            <h3>Continue ton parcours !</h3>
+                            <p>Tu as fait un excellent travail. Continue à explorer les différents quiz pour mieux te connaître et découvrir tes talents.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get score from URL parameters or sessionStorage
+        function getQuizResults() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const score = urlParams.get('score') || sessionStorage.getItem('quizScore') || 0;
+            const total = urlParams.get('total') || sessionStorage.getItem('quizTotal') || 10;
+            const type = urlParams.get('type') || sessionStorage.getItem('quizType') || 'personnalite';
+            
+            return {
+                score: parseInt(score),
+                total: parseInt(total),
+                type: type
+            };
+        }
+
+        // Display results
+        function displayResults() {
+            const results = getQuizResults();
+            const percentage = Math.round((results.score / results.total) * 100);
+            
+            // Update score display
+            document.getElementById('scoreNumber').textContent = results.score;
+            document.getElementById('scoreTotal').textContent = results.total;
+            document.getElementById('percentageBadge').textContent = percentage + '%';
+            
+            // Update stats
+            document.getElementById('correctAnswers').textContent = results.score;
+            document.getElementById('wrongAnswers').textContent = results.total - results.score;
+            
+            // Update message based on percentage
+            let message = '';
+            const percentageBadge = document.getElementById('percentageBadge');
+            
+            if (percentage >= 90) {
+                message = '🎉 Exceptionnel ! Tu maîtrises parfaitement le sujet.';
+                percentageBadge.style.background = 'linear-gradient(135deg, #24A148 0%, #1D8139 100%)';
+            } else if (percentage >= 75) {
+                message = '🌟 Excellent travail ! Tu as de très bonnes connaissances.';
+                percentageBadge.style.background = 'linear-gradient(135deg, #4E5EF1 0%, #0F62FE 100%)';
+            } else if (percentage >= 60) {
+                message = '👍 Bon résultat ! Tu as de bonnes bases à développer.';
+                percentageBadge.style.background = 'linear-gradient(135deg, #0F62FE 0%, #4E5EF1 100%)';
+            } else if (percentage >= 40) {
+                message = '💪 Pas mal ! Continue à apprendre et à t\'améliorer.';
+                percentageBadge.style.background = 'linear-gradient(135deg, #FF9500 0%, #FF6B00 100%)';
+            } else {
+                message = '📚 Continue tes efforts ! Il y a encore des choses à découvrir.';
+                percentageBadge.style.background = 'linear-gradient(135deg, #FF006B 0%, #E94389 100%)';
+            }
+            
+            document.getElementById('scoreMessage').textContent = message;
+            
+            // Animate the score circle
+            animateScore(results.score, results.total);
+            
+            // Setup restart button with correct quiz type
+            setupRestartButton(results.type);
+        }
+
+        // Setup restart button
+        function setupRestartButton(quizType) {
+            const restartBtn = document.getElementById('restartQuizBtn');
+            restartBtn.onclick = function() {
+                window.location.href = '/quiz-page.html?type=' + quizType;
+            };
+        }
+
+        // Animate score circle
+        function animateScore(score, total) {
+            const circle = document.querySelector('.score-circle-large');
+            const percentage = (score / total) * 100;
+            
+            // Create circular progress background
+            circle.style.background = `conic-gradient(
+                #4E5EF1 0deg,
+                #4E5EF1 ${percentage * 3.6}deg,
+                #E0E0E0 ${percentage * 3.6}deg,
+                #E0E0E0 360deg
+            )`;
+        }
+
+        // Settings dropdown
+        document.getElementById('settingsBtn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const dropdown = document.getElementById('settingsDropdown');
+            dropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function() {
+            const dropdown = document.getElementById('settingsDropdown');
+            dropdown.classList.remove('show');
+        });
+
+        // Navigation dropdown
+        function toggleNavDropdown(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const trigger = event.currentTarget;
+            const dropdown = trigger.parentElement;
+            dropdown.classList.toggle('open');
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', displayResults);
+    </script>
+</body>
+</html>

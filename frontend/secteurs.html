@@ -56,12 +56,6 @@
                         <div class="nav-label">Quiz & Tests</div>
                     </div>
                 </a>
-                <a href="/entreprises.html" class="nav-item-link">
-                    <div class="nav-item">
-                        <div class="nav-icon">🏢</div>
-                        <div class="nav-label">Approfondir le monde du travail</div>
-                    </div>
-                </a>
                 <a href="/secteurs.html" class="nav-item-link">
                     <div class="nav-item active">
                         <div class="nav-icon">🌐</div>
@@ -72,6 +66,12 @@
                     <div class="nav-item">
                         <div class="nav-icon">📅</div>
                         <div class="nav-label">Mes Événements</div>
+                    </div>
+                </a>
+                <a href="/entreprises.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏢</div>
+                        <div class="nav-label">Approfondir le monde du travail</div>
                     </div>
                 </a>
             </nav>
@@ -153,7 +153,7 @@
                     <p class="section-description">Sélection personnalisée de secteurs correspondant à votre profil et vos aspirations</p>
                     <div class="quiz-grid">
                         <!-- Aéronautique & Spatial -->
-                        <div class="quiz-card">
+                        <div class="quiz-card" onclick="window.location.href='/secteur-detail.html?type=aeronautique-spatial'" style="cursor: pointer;">
                             <div class="quiz-image">
                                 <img src="./Image_Secteurs/aeronautique.jpg" alt="Aéronautique & Spatial" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23004B87%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E✈️%3C/text%3E%3C/svg%3E'">
                             </div>
@@ -169,7 +169,7 @@
                         </div>
 
                         <!-- Défense & Sécurité -->
-                        <div class="quiz-card">
+                        <div class="quiz-card" onclick="window.location.href='/secteur-detail.html?type=defense-securite'" style="cursor: pointer;">
                             <div class="quiz-image">
                                 <img src="./Image_Secteurs/defense.jpg" alt="Défense & Sécurité" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%2300256C%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2224%22 fill=%22white%22%3E🛡️%3C/text%3E%3C/svg%3E'">
                             </div>

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAI - Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="logo.png" alt="NOVAI Logo" class="logo-image">
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="/journey.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏠</div>
+                        <div class="nav-label">Accueil</div>
+                    </div>
+                </a>
+                <div class="nav-dropdown">
+                    <div class="nav-item-link nav-dropdown-trigger" onclick="toggleNavDropdown(event)">
+                        <div class="nav-item">
+                            <div class="nav-icon">👤</div>
+                            <div class="nav-label">MOI</div>
+                            <div class="nav-dropdown-arrow">▼</div>
+                        </div>
+                    </div>
+                    <div class="nav-dropdown-menu">
+                        <a href="/profil.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">📋</div>
+                            <div class="dropdown-label">Mon Profil</div>
+                        </a>
+                        <a href="/gouts.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">❤️</div>
+                            <div class="dropdown-label">Mes Goûts</div>
+                        </a>
+                        <a href="/capacites.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">🧠</div>
+                            <div class="dropdown-label">Mes Capacités</div>
+                        </a>
+                        <a href="/personality-journey.html" class="nav-dropdown-item">
+                            <div class="dropdown-icon">✨</div>
+                            <div class="dropdown-label">Test de Personnalité</div>
+                        </a>
+                    </div>
+                </div>
+                <a href="/quiz.html" class="nav-item-link">
+                    <div class="nav-item active">
+                        <div class="nav-icon">🎯</div>
+                        <div class="nav-label">Quiz & Tests</div>
+                    </div>
+                </a>
+                <a href="/secteurs.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🌐</div>
+                        <div class="nav-label">Découverte de secteurs</div>
+                    </div>
+                </a>
+                <a href="/events.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">📅</div>
+                        <div class="nav-label">Mes Événements</div>
+                    </div>
+                </a>
+                <a href="/entreprises.html" class="nav-item-link">
+                    <div class="nav-item">
+                        <div class="nav-icon">🏢</div>
+                        <div class="nav-label">Approfondir le monde du travail</div>
+                    </div>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <button class="header-icon-btn back-btn" title="Retour" onclick="window.location.href='/quiz.html'">
+                        ← Retour aux quiz
+                    </button>
+                </div>
+
+                <div class="header-center">
+                    <div class="progress-blocks">
+                        <a href="/personality-journey.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">1</span>
+                            <span class="block-label">Te connaitre</span>
+                        </a>
+                        <a href="/quiz.html" class="progress-block active" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">2</span>
+                            <span class="block-label">Te tester</span>
+                        </a>
+                        <a href="/secteurs.html" class="progress-block" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">3</span>
+                            <span class="block-label">Découverte</span>
+                        </a>
+                        <a href="/events.html" class="progress-block" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">4</span>
+                            <span class="block-label">Evénements</span>
+                        </a>
+                        <a href="/entreprises.html" class="progress-block" style="text-decoration: none; color: inherit;">
+                            <span class="block-number">5</span>
+                            <span class="block-label">Approf.</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <div class="header-icon-btn" id="settingsBtn">
+                        ⚙️
+                        <div class="settings-dropdown" id="settingsDropdown">
+                            <div class="dropdown-item">Style du site</div>
+                            <div class="dropdown-item">Support</div>
+                            <div class="dropdown-item">Abonnement</div>
+                            <div class="dropdown-item">Nos partenaires</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Quiz Header -->
+                <div class="quiz-page-header">
+                    <div class="quiz-badge">
+                        <img id="quizBadgeImg" src="./Image_Quizz/Test_Ciblier_Pour_User.jpg" alt="Quiz Badge">
+                    </div>
+                    <div class="quiz-page-info">
+                        <h1 id="quizTitle">Quiz Personnalité</h1>
+                        <p id="quizDescription">Mieux te comprendre et découvrir tes traits distinctifs</p>
+                        <div class="quiz-meta">
+                            <span class="quiz-difficulty" id="quizDifficulty">Facile</span>
+                            <span class="quiz-time" id="quizTime">⏱️ 10 min</span>
+                            <span class="quiz-questions-count" id="questionsCount">10 questions</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="quiz-progress-container">
+                    <div class="quiz-progress-text">
+                        <span>Question <span id="currentQuestion">1</span> sur <span id="totalQuestions">10</span></span>
+                        <span id="progressPercentage">10%</span>
+                    </div>
+                    <div class="quiz-progress-bar">
+                        <div class="quiz-progress-fill" id="progressFill" style="width: 10%"></div>
+                    </div>
+                </div>
+
+                <!-- Quiz Question Container -->
+                <div class="quiz-question-container" id="quizContainer">
+                    <!-- Question will be loaded here by JavaScript -->
+                    <div class="quiz-question-box">
+                        <h2 class="question-title" id="questionTitle">Chargement...</h2>
+                        <div class="quiz-answers" id="answersContainer">
+                            <!-- Answers will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="quiz-navigation">
+                    <button class="btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>
+                        ← Précédent
+                    </button>
+                    <button class="btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>
+                        Suivant →
+                    </button>
+                    <button class="btn-success" id="submitBtn" onclick="submitQuiz()" style="display: none;">
+                        Terminer le quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz Data Collections
+        const quizzes = {
+            'personnalite': {
+                title: "Quiz Personnalité",
+                description: "Mieux te comprendre et découvrir tes traits distinctifs",
+                difficulty: "Facile",
+                time: "10 min",
+                badge: "./Image_Quizz/Test_Ciblier_Pour_User.jpg",
+                questions: [
+                    {
+                        id: 1,
+                        question: "Dans quelle situation te sens-tu le plus à l'aise ?",
+                        answers: [
+                            { id: "a", text: "Travailler en équipe sur un projet commun", correct: false },
+                            { id: "b", text: "Travailler seul sur un projet personnel", correct: false },
+                            { id: "c", text: "Diriger une équipe et coordonner les efforts", correct: false },
+                            { id: "d", text: "Aider les autres à résoudre leurs problèmes", correct: true }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        question: "Comment réagis-tu face à un défi imprévu ?",
+                        answers: [
+                            { id: "a", text: "Je cherche immédiatement des solutions créatives", correct: true },
+                            { id: "b", text: "Je prends du temps pour analyser la situation", correct: false },
+                            { id: "c", text: "Je demande conseil à d'autres personnes", correct: false },
+                            { id: "d", text: "Je suis le protocole établi", correct: false }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        question: "Quel type d'activité préfères-tu dans ton temps libre ?",
+                        answers: [
+                            { id: "a", text: "Lire ou apprendre de nouvelles choses", correct: false },
+                            { id: "b", text: "Créer quelque chose (art, musique, bricolage)", correct: true },
+                            { id: "c", text: "Faire du sport ou des activités physiques", correct: false },
+                            { id: "d", text: "Passer du temps avec des amis", correct: false }
+                        ]
+                    },
+                    {
+                        id: 4,
+                        question: "Qu'est-ce qui te motive le plus dans un projet ?",
+                        answers: [
+                            { id: "a", text: "L'impact positif sur les autres", correct: false },
+                            { id: "b", text: "La reconnaissance de mon travail", correct: false },
+                            { id: "c", text: "Le défi intellectuel", correct: true },
+                            { id: "d", text: "La rémunération financière", correct: false }
+                        ]
+                    },
+                    {
+                        id: 5,
+                        question: "Comment préfères-tu communiquer des idées complexes ?",
+                        answers: [
+                            { id: "a", text: "Par des présentations visuelles et graphiques", correct: false },
+                            { id: "b", text: "Par l'écriture détaillée", correct: false },
+                            { id: "c", text: "Par la discussion et le débat", correct: true },
+                            { id: "d", text: "Par des démonstrations pratiques", correct: false }
+                        ]
+                    },
+                    {
+                        id: 6,
+                        question: "Dans un groupe de travail, quel rôle prends-tu naturellement ?",
+                        answers: [
+                            { id: "a", text: "Le leader qui organise et motive", correct: false },
+                            { id: "b", text: "Le créatif qui propose des idées nouvelles", correct: true },
+                            { id: "c", text: "L'analyste qui évalue les options", correct: false },
+                            { id: "d", text: "Le médiateur qui facilite la collaboration", correct: false }
+                        ]
+                    },
+                    {
+                        id: 7,
+                        question: "Quelle phrase te décrit le mieux ?",
+                        answers: [
+                            { id: "a", text: "J'aime suivre des règles et des procédures établies", correct: false },
+                            { id: "b", text: "J'aime explorer de nouvelles façons de faire", correct: true },
+                            { id: "c", text: "J'aime maintenir l'harmonie dans le groupe", correct: false },
+                            { id: "d", text: "J'aime atteindre des objectifs mesurables", correct: false }
+                        ]
+                    },
+                    {
+                        id: 8,
+                        question: "Comment gères-tu ton temps et tes priorités ?",
+                        answers: [
+                            { id: "a", text: "Je planifie tout à l'avance avec des listes détaillées", correct: false },
+                            { id: "b", text: "Je m'adapte selon les situations qui se présentent", correct: true },
+                            { id: "c", text: "Je me concentre sur ce qui est urgent", correct: false },
+                            { id: "d", text: "Je délègue autant que possible", correct: false }
+                        ]
+                    },
+                    {
+                        id: 9,
+                        question: "Qu'est-ce qui te stresse le plus ?",
+                        answers: [
+                            { id: "a", text: "Le manque de structure et d'organisation", correct: false },
+                            { id: "b", text: "Les conflits interpersonnels", correct: false },
+                            { id: "c", text: "La routine et la répétition", correct: true },
+                            { id: "d", text: "L'incertitude sur l'avenir", correct: false }
+                        ]
+                    },
+                    {
+                        id: 10,
+                        question: "Dans 10 ans, qu'est-ce qui serait le plus important pour toi ?",
+                        answers: [
+                            { id: "a", text: "Avoir un impact positif sur la société", correct: false },
+                            { id: "b", text: "Être reconnu comme expert dans mon domaine", correct: false },
+                            { id: "c", text: "Avoir la liberté et l'indépendance", correct: true },
+                            { id: "d", text: "Avoir une vie équilibrée et stable", correct: false }
+                        ]
+                    }
+                ]
+            },
+            'aviation': {
+                title: "Quiz Métiers de l'Aviation",
+                description: "Découvre les carrières dans l'aviation et teste tes connaissances",
+                difficulty: "Moyen",
+                time: "17 min",
+                badge: "./Image_Quizz/avion.jpg",
+                questions: [
+                    {
+                        id: 1,
+                        question: "Quel est le rôle principal d'un pilote de ligne ?",
+                        answers: [
+                            { id: "a", text: "Commander l'avion et assurer la sécurité des passagers", correct: true },
+                            { id: "b", text: "Vérifier les billets des passagers", correct: false },
+                            { id: "c", text: "Réparer l'avion en cas de panne", correct: false },
+                            { id: "d", text: "Servir les repas aux passagers", correct: false }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        question: "Combien d'heures de vol minimum sont généralement requises pour obtenir une licence de pilote de ligne (ATPL) ?",
+                        answers: [
+                            { id: "a", text: "500 heures", correct: false },
+                            { id: "b", text: "1500 heures", correct: true },
+                            { id: "c", text: "3000 heures", correct: false },
+                            { id: "d", text: "100 heures", correct: false }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        question: "Quel métier consiste à guider les avions au sol et dans l'espace aérien ?",
+                        answers: [
+                            { id: "a", text: "Mécanicien aéronautique", correct: false },
+                            { id: "b", text: "Hôtesse de l'air", correct: false },
+                            { id: "c", text: "Contrôleur aérien", correct: true },
+                            { id: "d", text: "Ingénieur avionique", correct: false }
+                        ]
+                    },
+                    {
+                        id: 4,
+                        question: "Quelle formation est nécessaire pour devenir contrôleur aérien en France ?",
+                        answers: [
+                            { id: "a", text: "Un BTS Aéronautique", correct: false },
+                            { id: "b", text: "Formation à l'ENAC (École Nationale de l'Aviation Civile)", correct: true },
+                            { id: "c", text: "Un master en physique", correct: false },
+                            { id: "d", text: "Aucune formation spécifique", correct: false }
+                        ]
+                    },
+                    {
+                        id: 5,
+                        question: "Qu'est-ce qu'un mécanicien aéronautique ?",
+                        answers: [
+                            { id: "a", text: "Une personne qui pilote les avions", correct: false },
+                            { id: "b", text: "Une personne qui entretient et répare les avions", correct: true },
+                            { id: "c", text: "Une personne qui vend des billets d'avion", correct: false },
+                            { id: "d", text: "Une personne qui nettoie les avions", correct: false }
+                        ]
+                    },
+                    {
+                        id: 6,
+                        question: "Quel est le rôle de l'ingénieur avionique ?",
+                        answers: [
+                            { id: "a", text: "Concevoir et maintenir les systèmes électroniques de l'avion", correct: true },
+                            { id: "b", text: "Piloter l'avion", correct: false },
+                            { id: "c", text: "Servir les passagers", correct: false },
+                            { id: "d", text: "Gérer les réservations", correct: false }
+                        ]
+                    },
+                    {
+                        id: 7,
+                        question: "Quelle compagnie aérienne est la plus grande d'Europe ?",
+                        answers: [
+                            { id: "a", text: "British Airways", correct: false },
+                            { id: "b", text: "Lufthansa", correct: false },
+                            { id: "c", text: "Air France-KLM", correct: true },
+                            { id: "d", text: "Ryanair", correct: false }
+                        ]
+                    },
+                    {
+                        id: 8,
+                        question: "Quel appareil les pilotes utilisent-ils pour mesurer l'altitude ?",
+                        answers: [
+                            { id: "a", text: "Altimètre", correct: true },
+                            { id: "b", text: "Anémomètre", correct: false },
+                            { id: "c", text: "Baromètre", correct: false },
+                            { id: "d", text: "Tachymètre", correct: false }
+                        ]
+                    },
+                    {
+                        id: 9,
+                        question: "Combien de temps dure généralement la formation pour devenir pilote de ligne ?",
+                        answers: [
+                            { id: "a", text: "6 mois", correct: false },
+                            { id: "b", text: "1 an", correct: false },
+                            { id: "c", text: "2 à 3 ans", correct: true },
+                            { id: "d", text: "5 ans", correct: false }
+                        ]
+                    },
+                    {
+                        id: 10,
+                        question: "Quel est le salaire moyen d'un pilote de ligne en début de carrière en France ?",
+                        answers: [
+                            { id: "a", text: "2 000 € par mois", correct: false },
+                            { id: "b", text: "4 000 à 6 000 € par mois", correct: true },
+                            { id: "c", text: "10 000 € par mois", correct: false },
+                            { id: "d", text: "15 000 € par mois", correct: false }
+                        ]
+                    }
+                ]
+            },
+            'ingenieur-aeronautique': {
+                title: "Quiz Ingénieur Aéronautique",
+                description: "Teste tes connaissances en ingénierie aéronautique",
+                difficulty: "Difficile",
+                time: "20 min",
+                badge: "./Image_Quizz/ingenieur-en-aeronautique.jpg",
+                questions: [
+                    {
+                        id: 1,
+                        question: "Qu'est-ce que l'aérodynamique ?",
+                        answers: [
+                            { id: "a", text: "L'étude du mouvement de l'air autour des objets", correct: true },
+                            { id: "b", text: "L'étude des moteurs d'avion", correct: false },
+                            { id: "c", text: "L'étude des matériaux", correct: false },
+                            { id: "d", text: "L'étude de l'électronique embarquée", correct: false }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        question: "Quelle école d'ingénieurs est la plus réputée en aéronautique en France ?",
+                        answers: [
+                            { id: "a", text: "École Polytechnique", correct: false },
+                            { id: "b", text: "ISAE-SUPAERO", correct: true },
+                            { id: "c", text: "Centrale Paris", correct: false },
+                            { id: "d", text: "Arts et Métiers", correct: false }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        question: "Quel type de propulsion est utilisé par la plupart des avions de ligne modernes ?",
+                        answers: [
+                            { id: "a", text: "Moteur à hélice", correct: false },
+                            { id: "b", text: "Turboréacteur", correct: true },
+                            { id: "c", text: "Moteur électrique", correct: false },
+                            { id: "d", text: "Fusée", correct: false }
+                        ]
+                    },
+                    {
+                        id: 4,
+                        question: "Qu'est-ce que la portance ?",
+                        answers: [
+                            { id: "a", text: "La force qui permet à l'avion de voler", correct: true },
+                            { id: "b", text: "La résistance de l'air", correct: false },
+                            { id: "c", text: "Le poids de l'avion", correct: false },
+                            { id: "d", text: "La poussée du moteur", correct: false }
+                        ]
+                    },
+                    {
+                        id: 5,
+                        question: "Quel matériau est couramment utilisé dans la construction des avions modernes pour sa légèreté et sa résistance ?",
+                        answers: [
+                            { id: "a", text: "Acier", correct: false },
+                            { id: "b", text: "Bois", correct: false },
+                            { id: "c", text: "Aluminium et composites", correct: true },
+                            { id: "d", text: "Plastique", correct: false }
+                        ]
+                    },
+                    {
+                        id: 6,
+                        question: "Que signifie l'acronyme ENAC ?",
+                        answers: [
+                            { id: "a", text: "École Nationale de l'Aviation Commerciale", correct: false },
+                            { id: "b", text: "École Nationale de l'Aviation Civile", correct: true },
+                            { id: "c", text: "Établissement National Aéronautique et Commercial", correct: false },
+                            { id: "d", text: "École Nationale d'Aéronautique et Contrôle", correct: false }
+                        ]
+                    },
+                    {
+                        id: 7,
+                        question: "Quel est le rôle principal d'un ingénieur en structures aéronautiques ?",
+                        answers: [
+                            { id: "a", text: "Concevoir les moteurs", correct: false },
+                            { id: "b", text: "Concevoir et analyser la structure de l'avion pour qu'elle soit solide et légère", correct: true },
+                            { id: "c", text: "Programmer les systèmes de navigation", correct: false },
+                            { id: "d", text: "Gérer la production", correct: false }
+                        ]
+                    },
+                    {
+                        id: 8,
+                        question: "Combien d'années d'études sont généralement nécessaires pour devenir ingénieur aéronautique ?",
+                        answers: [
+                            { id: "a", text: "2 ans", correct: false },
+                            { id: "b", text: "3 ans", correct: false },
+                            { id: "c", text: "5 ans", correct: true },
+                            { id: "d", text: "7 ans", correct: false }
+                        ]
+                    },
+                    {
+                        id: 9,
+                        question: "Qu'est-ce qu'un système 'fly-by-wire' ?",
+                        answers: [
+                            { id: "a", text: "Un système de commandes de vol électriques", correct: true },
+                            { id: "b", text: "Un type de moteur", correct: false },
+                            { id: "c", text: "Un système de navigation", correct: false },
+                            { id: "d", text: "Un système de communication", correct: false }
+                        ]
+                    },
+                    {
+                        id: 10,
+                        question: "Quel avion commercial est considéré comme le plus gros au monde ?",
+                        answers: [
+                            { id: "a", text: "Boeing 747", correct: false },
+                            { id: "b", text: "Airbus A380", correct: true },
+                            { id: "c", text: "Boeing 777", correct: false },
+                            { id: "d", text: "Airbus A350", correct: false }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // Get quiz type from URL or default
+        const urlParams = new URLSearchParams(window.location.search);
+        const quizType = urlParams.get('type') || 'personnalite';
+        const quizData = quizzes[quizType] || quizzes['personnalite'];
+
+        // State
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let score = 0;
+
+        // Initialize quiz
+        function initQuiz() {
+            // Set quiz header info
+            document.getElementById('quizTitle').textContent = quizData.title;
+            document.getElementById('quizDescription').textContent = quizData.description;
+            document.getElementById('quizDifficulty').textContent = quizData.difficulty;
+            document.getElementById('quizTime').textContent = '⏱️ ' + quizData.time;
+            document.getElementById('questionsCount').textContent = quizData.questions.length + ' questions';
+            document.getElementById('quizBadgeImg').src = quizData.badge;
+            document.getElementById('totalQuestions').textContent = quizData.questions.length;
+
+            // Load first question
+            loadQuestion();
+        }
+
+        // Load question
+        function loadQuestion() {
+            const question = quizData.questions[currentQuestionIndex];
+            
+            // Update progress
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            const progress = ((currentQuestionIndex + 1) / quizData.questions.length) * 100;
+            document.getElementById('progressPercentage').textContent = Math.round(progress) + '%';
+            document.getElementById('progressFill').style.width = progress + '%';
+
+            // Update question
+            document.getElementById('questionTitle').textContent = question.question;
+
+            // Load answers
+            const answersContainer = document.getElementById('answersContainer');
+            answersContainer.innerHTML = '';
+            
+            question.answers.forEach(answer => {
+                const answerElement = document.createElement('label');
+                answerElement.className = 'answer-option';
+                answerElement.innerHTML = `
+                    <input type="radio" name="answer" value="${answer.id}" onchange="selectAnswer('${answer.id}')">
+                    <span class="answer-text">${answer.text}</span>
+                `;
+                answersContainer.appendChild(answerElement);
+            });
+
+            // Restore previous answer if exists
+            if (userAnswers[currentQuestionIndex]) {
+                const radio = document.querySelector(`input[value="${userAnswers[currentQuestionIndex]}"]`);
+                if (radio) radio.checked = true;
+                enableNextButton();
+            }
+
+            // Update navigation buttons
+            updateNavigationButtons();
+        }
+
+        // Select answer
+        function selectAnswer(answerId) {
+            userAnswers[currentQuestionIndex] = answerId;
+            enableNextButton();
+            updateNavigationButtons(); // Update to enable submit button if on last question
+        }
+
+        // Enable next button
+        function enableNextButton() {
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        // Update navigation buttons
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Previous button
+            prevBtn.disabled = currentQuestionIndex === 0;
+
+            // Next/Submit button
+            if (currentQuestionIndex === quizData.questions.length - 1) {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'inline-block';
+                submitBtn.disabled = !userAnswers[currentQuestionIndex];
+            } else {
+                nextBtn.style.display = 'inline-block';
+                submitBtn.style.display = 'none';
+                nextBtn.disabled = !userAnswers[currentQuestionIndex];
+            }
+        }
+
+        // Next question
+        function nextQuestion() {
+            if (currentQuestionIndex < quizData.questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        // Previous question
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            // Calculate score
+            score = 0;
+            userAnswers.forEach((answer, index) => {
+                const question = quizData.questions[index];
+                const correctAnswer = question.answers.find(a => a.correct);
+                if (answer === correctAnswer.id) {
+                    score++;
+                }
+            });
+
+            // Store results and redirect to results page
+            sessionStorage.setItem('quizScore', score);
+            sessionStorage.setItem('quizTotal', quizData.questions.length);
+            sessionStorage.setItem('quizType', quizType);
+            window.location.href = '/quiz-result.html?score=' + score + '&total=' + quizData.questions.length + '&type=' + quizType;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            score = 0;
+            initQuiz();
+        }
+
+        // Settings dropdown
+        document.getElementById('settingsBtn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const dropdown = document.getElementById('settingsDropdown');
+            dropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function() {
+            const dropdown = document.getElementById('settingsDropdown');
+            dropdown.classList.remove('show');
+        });
+
+        // Navigation dropdown
+        function toggleNavDropdown(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const trigger = event.currentTarget;
+            const dropdown = trigger.parentElement;
+            dropdown.classList.toggle('open');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                }
+            });
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initQuiz);
+    </script>
+</body>
+</html>
