@@ -17,12 +17,13 @@ NovAI-project/
 
 ## Prérequis
 
-L'application nécessite une clé API OpenAI pour fonctionner. Vous devez disposer d'une clé de type `sk-****`.
+L'application fonctionne sans clé API OpenAI, mais la partie test ne se comportera pas de manière optimale. Pour une expérience complète, ajoutez votre clé API OpenAI dans le fichier `backend/.env` :
 
-Créez un fichier `.env` dans le dossier `backend/` avec le contenu suivant :
 ```
 OPENAI_API_KEY=sk-votre-clé-ici
 ```
+
+Le fichier `.env` est déjà présent dans le repository, il vous suffit d'y insérer votre clé de type `sk-****`.
 
 ## Installation et Démarrage
 
